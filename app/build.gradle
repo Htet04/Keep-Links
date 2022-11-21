@@ -6,6 +6,10 @@ android {
     namespace 'com.ktz.keeplinks'
     compileSdk 32
 
+    buildFeatures{
+        viewBinding true
+    }
+
     defaultConfig {
         applicationId "com.ktz.keeplinks"
         minSdk 26
