@@ -45,7 +45,7 @@ All id from <strong>MainActivity</strong>
 
 ## Layout
 
-- search_layout.xml<br>ဒီ Layout ကို [main_activity_menu](#main_activity_menuxml)မှာ သုံးထားပါတယ်။<br>`app:actonViewClass="androidx.appcompat.widget.SearchView"`<br>ဆိုပြီးတစ်ခုတည်းသုံးရင် SearchView layout က ကြည့်ရဆိုးလို့ `android:actionLayout="search_layout"` ဆိုပြီး သီးသန့် layout ထည့်သုံးလိုက်တာ။ 
+- search_layout.xml<br>ဒီ Layout ကို [main_activity_menu.xml](#main_activity_menuxml)မှာ သုံးထားပါတယ်။<br>`app:actonViewClass="androidx.appcompat.widget.SearchView"`<br>ဆိုပြီးတစ်ခုတည်းသုံးရင် SearchView layout က ကြည့်ရဆိုးလို့ `android:actionLayout="search_layout"` ဆိုပြီး သီးသန့် layout ထည့်သုံးလိုက်တာ။ 
 
 ## Menu
 
