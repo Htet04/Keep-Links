@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_toolbar_search"
+        android:icon="@drawable/ic_round_search_24"
+        android:iconTint="@color/blackwhite"
+        android:title="Search"
+        android:actionLayout="@layout/search_layout"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="ifRoom|collapseActionView" />
+    <item
+        android:id="@+id/menu_toolbar_theme"
+        android:title="Theme">
+        <menu>
+            <group android:checkableBehavior="single"
+                android:id="@+id/theme_group">
+                <item
+                    android:id="@+id/theme_light"
+                    android:title="Light" />
+                <item
+                    android:id="@+id/theme_dark"
+                    android:title="Dark"/>
+                <item
+                    android:id="@+id/theme_system"
+                    android:title="Follow System Setting"/>
+            </group>
+        </menu>
+    </item>
+</menu>
