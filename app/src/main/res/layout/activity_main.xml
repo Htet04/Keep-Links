@@ -18,7 +18,7 @@
         android:id="@+id/main_bnv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/main_bnv_menu"
+        app:menu="@menu/bnv_menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

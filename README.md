@@ -37,19 +37,19 @@ All id from <strong>MainActivity</strong>
 
 ## Drawable
 
-* category icon
-* favorite icon
-* question mark icon (temporary)
-* home icon
-* search icon
+* category icon [bnv_menu.xml](#bnv_menuxml) မှာသုံးထား
+* favorite icon [bnv_menu.xml](#bnv_menuxml) မှာသုံးထား
+* question mark icon (temporary) [bnv_menu.xml](#bnv_menuxml) မှာသုံးထား
+* home icon [bnv_menu.xml](#bnv_menuxml) မှာသုံးထား
+* search icon [activity_menu.xml](#activity_menuxml) မှာသုံးထား
 
 ## Layout
 
-- search_layout.xml<br>ဒီ Layout ကို [main_activity_menu.xml](#main_activity_menuxml)မှာ သုံးထားပါတယ်။<br>`app:actonViewClass="androidx.appcompat.widget.SearchView"`<br>ဆိုပြီးတစ်ခုတည်းသုံးရင် SearchView layout က ကြည့်ရဆိုးလို့ `android:actionLayout="search_layout"` ဆိုပြီး သီးသန့် layout ထည့်သုံးလိုက်တာ။ 
+- search_layout.xml<br>ဒီ Layout ကို [activity_menu.xml](#activity_menuxml)မှာ သုံးထားပါတယ်။<br>`app:actonViewClass="androidx.appcompat.widget.SearchView"`<br>ဆိုပြီးတစ်ခုတည်းသုံးရင် SearchView layout က ကြည့်ရဆိုးလို့ `android:actionLayout="search_layout"` ဆိုပြီး သီးသန့် layout ထည့်သုံးလိုက်တာ။ 
 
 ## Menu
 
-### main_activity_menu.xml
+### activity_menu.xml
 - menu_toolbar_search(MenuItem for SearchView)
 - theme_group(Menu Group)
 - theme_light(MenuItem)<br>to switch to light mode
@@ -57,7 +57,7 @@ All id from <strong>MainActivity</strong>
 - theme_system(MenuItem)<br>to switch to follow system setting
 
 
-### main_bnv_menu.xml
+### bnv_menu.xml
 - menu_bnv_home(MenuItem)
 - menu_bnv_category(MenuItem)
 - menu_bnv_favorite(MenuItem)

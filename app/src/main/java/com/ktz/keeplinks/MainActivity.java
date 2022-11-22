@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("RestrictedApi")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_activity_menu, menu);
+        getMenuInflater().inflate(R.menu.activity_menu, menu);
 
         // code to show the Option Menu icon visible
         if (menu instanceof MenuBuilder) {
