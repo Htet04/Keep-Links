@@ -32,6 +32,9 @@ All id from <strong>MainActivity</strong>
 
 <strong>Empty</strong>
 
+## Java File
+* Utils.java (ကုဒ်တွေကို နာမည်တိုတိုနဲ့ လွယ်လွယ် ပြန်သုံးလို့ရအောင် စုထားတဲ့ Java Class)
+
 ## Drawable
 
 * category icon
