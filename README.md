@@ -45,21 +45,21 @@ All id from <strong>MainActivity</strong>
 
 ## Layout
 
-- search_layout.xml<br>`app:actonViewClass="androidx.appcompat.widget.SearchView"`<br>ဆိုပြီးတစ်ခုတည်းသုံးရင် SearchView layout က ကြည့်ရဆိုးလို့ `android:actionLayout="search_layout"` ဆိုပြီး သီးသန့် layout ထည့်သုံးလိုက်တာ။ 
+- search_layout.xml<br>ဒီ Layout ကို [main_activity_menu](#main_activity_menuxml)မှာ သုံးထားပါတယ်။<br>`app:actonViewClass="androidx.appcompat.widget.SearchView"`<br>ဆိုပြီးတစ်ခုတည်းသုံးရင် SearchView layout က ကြည့်ရဆိုးလို့ `android:actionLayout="search_layout"` ဆိုပြီး သီးသန့် layout ထည့်သုံးလိုက်တာ။ 
 
 ## Menu
 
-* main_activity_menu.xml
-    - menu_toolbar_search(MenuItem for SearchView)
-    - theme_group(Menu Group)
-    - theme_light(MenuItem)<br>to switch to light mode
-    - theme_dark(MenuItem)<br>to switch to dark mode
-    - theme_system(MenuItem)<br>to switch to follow system setting
+### main_activity_menu.xml
+- menu_toolbar_search(MenuItem for SearchView)
+- theme_group(Menu Group)
+- theme_light(MenuItem)<br>to switch to light mode
+- theme_dark(MenuItem)<br>to switch to dark mode
+- theme_system(MenuItem)<br>to switch to follow system setting
 
 
-* main_bnv_menu.xml
-    - menu_bnv_home(MenuItem)
-    - menu_bnv_category(MenuItem)
-    - menu_bnv_favorite(MenuItem)
-    - menu_bnv_unknown1(MenuItem)<br>Don't have idea yet
+### main_bnv_menu.xml
+- menu_bnv_home(MenuItem)
+- menu_bnv_category(MenuItem)
+- menu_bnv_favorite(MenuItem)
+- menu_bnv_unknown1(MenuItem)<br>Don't have idea yet
 
