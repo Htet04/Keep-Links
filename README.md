@@ -2,11 +2,21 @@
 
 Keep Links Application
 
+<strong>Note Format</strong><br>
+id (Object Reference) Note text
+
 ## Activity
 
 |                Java                |                Xml                 | Notes |
 |:----------------------------------:|:----------------------------------:|:-----:|
 | [MainActivity.java](#MainActivity) | [activity_main.xml](#MainActivity) |       |
+
+### MainActivity
+
+All id from <strong>MainActivity</strong>
+
+* mainFrame(FrameLayout)
+* mainBnv(BottomNavigationView)
 
 ## Fragment
 
@@ -14,14 +24,8 @@ Keep Links Application
 |:----:|:---:|:-----:|
 |      |     |       |
 
-## MainActivity
 
-All id from <strong>MainActivity</strong>
-
-* mainFrame(FrameLayout)
-* mainBnv(BottomNavigationView)
-
-## FragmentActivity
+###l FragmentActivity
 
 <strong>Empty</strong>
 
