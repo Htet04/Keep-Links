@@ -4,9 +4,9 @@ Keep Links Application
 
 ## Activity
 
-|                           Java                            |                            Xml                            | Notes |
-|:---------------------------------------------------------:|:---------------------------------------------------------:|:-----:|
-| [MainActivity.java](#MainActivity) | [activity_main.xml](#MainActivity.java+activity_main.xml) |       |
+|                Java                |                Xml                 | Notes |
+|:----------------------------------:|:----------------------------------:|:-----:|
+| [MainActivity.java](#MainActivity) | [activity_main.xml](#MainActivity) |       |
 
 ## Fragment
 
