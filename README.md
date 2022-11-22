@@ -45,7 +45,7 @@ All id from <strong>MainActivity</strong>
 
 ## Layout
 
-- search_layout.xml<br>Add that layout to make look good on ToolBar when user use it.
+- search_layout.xml<br>`app:actonViewClass="androidx.appcompat.widget.SearchView"`<br>ဆိုပြီးတစ်ခုတည်းသုံးရင် SearchView layout က ကြည့်ရဆိုးလို့ `android:actionLayout="search_layout"` ဆိုပြီး သီးသန့် layout ထည့်သုံးလိုက်တာ။ 
 
 ## Menu
 
