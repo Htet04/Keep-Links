@@ -3,7 +3,7 @@
 Keep Links Application
 
 ## မှတ်ချက်
-<b>Project ထဲဝင်တာနဲ့ ချက်ချင်း Update အရင် ခေါ်ပါ။<br>Code, Design & etc.. ပြင်ပြီး၊ စမ်းပြီးလို့ အဆင်ပြေ ရင် commit & push လုပ်ပါ။</b> 
+<b>Project ထဲဝင်တာနဲ့ ချက်ချင်း Update အရင် ခေါ်ပါ။<br>Code, Design & etc.. ပြင်ပြီး၊ စမ်းပြီးလို့ အဆင်ပြေ ရင် commit & push လုပ်ပါ။<br>ဘယ်နေရာမှာ ဘာလုပ်ခဲ့လဲဆိုတဲ့ Comment ရေးခဲ့ပါ။</b> 
 
 <strong>Note Format</strong><br>
 id (Object Reference) Note text
