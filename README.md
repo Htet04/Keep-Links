@@ -28,7 +28,7 @@ All id from <strong>MainActivity</strong>
 |      |     |       |
 
 
-###l FragmentActivity
+### FragmentActivity
 
 <strong>Empty</strong>
 
