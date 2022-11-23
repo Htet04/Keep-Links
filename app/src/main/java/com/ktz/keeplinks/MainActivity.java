@@ -12,8 +12,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.widget.SearchView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.ktz.keeplinks.databinding.ActivityMainBinding;
+import com.ktz.keeplinks.ui.fragment.CategoryFragment;
+import com.ktz.keeplinks.ui.fragment.FavoriteFragment;
+import com.ktz.keeplinks.ui.fragment.HomeFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +30,31 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        initialize();
+    }
+
+    private void initialize() {
+        // on App start view
+        // can change to user last chose by using SharedPreference
+        showFragment(new HomeFragment());
+
+        binding.mainBnv.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.menu_bnv_home: {
+                    showFragment(new HomeFragment());
+                    break;
+                }
+                case R.id.menu_bnv_category: {
+                    showFragment(new CategoryFragment());
+                    break;
+                }
+                case R.id.menu_bnv_favorite: {
+                    showFragment(new FavoriteFragment());
+                    break;
+                }
+            }
+            return true;
+        });
     }
 
     @SuppressLint("RestrictedApi")
@@ -73,12 +103,18 @@ public class MainActivity extends AppCompatActivity {
                     Utils.setTheme(AppCompatDelegate.MODE_NIGHT_YES);
                     break;
                 }
-                case R.id.theme_system:{
+                case R.id.theme_system: {
                     Utils.setTheme(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
                     break;
                 }
             }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void showFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.main_frame, fragment);
+        transaction.commit();
     }
 }
