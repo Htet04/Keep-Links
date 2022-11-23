@@ -22,7 +22,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull HomeViewHolder holder, int position) {
-        binding.ttt.setText("Test "+position);
+//        binding.ttt.setText("Test "+position);
     }
 
     @Override
