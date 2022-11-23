@@ -15,6 +15,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.material.navigation.NavigationBarView;
 import com.ktz.keeplinks.databinding.ActivityMainBinding;
 import com.ktz.keeplinks.ui.fragment.CategoryFragment;
 import com.ktz.keeplinks.ui.fragment.FavoriteFragment;
@@ -54,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             return true;
+        });
+        binding.mainBnv.setOnItemReselectedListener(item -> {
+            // to prevent content reload
         });
     }
 
