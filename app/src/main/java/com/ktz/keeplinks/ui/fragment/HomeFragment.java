@@ -1,15 +1,14 @@
 package com.ktz.keeplinks.ui.fragment;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.ktz.keeplinks.R;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.ktz.keeplinks.adapter.HomeAdapter;
 import com.ktz.keeplinks.databinding.FragmentHomeBinding;
 
@@ -32,8 +31,13 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding.homeRecycler.setHasFixedSize(true);
-        binding.homeRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.homeRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         binding.homeRecycler.setAdapter(new HomeAdapter());
+
+        binding.btnFab.setOnClickListener(v -> {
+            // test code
+            new AddDialogFragment().show(getActivity().getSupportFragmentManager(),"TAG");
+        });
         return binding.getRoot();
     }
 }
