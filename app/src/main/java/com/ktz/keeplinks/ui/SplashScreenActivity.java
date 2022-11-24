@@ -1,4 +1,4 @@
-package com.ktz.keeplinks;
+package com.ktz.keeplinks.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 
+import com.ktz.keeplinks.MainActivity;
 import com.ktz.keeplinks.databinding.ActivitySplashScreenBinding;
 
 @SuppressLint("CustomSplashScreen")
@@ -24,7 +25,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
 
         new Handler().postDelayed(()->{
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
             finish();
         },2250);
     }
