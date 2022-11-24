@@ -1,4 +1,4 @@
-package com.ktz.keeplinks;
+package com.codewall.keeplinks;
 
 import android.content.Context;
 import android.view.LayoutInflater;

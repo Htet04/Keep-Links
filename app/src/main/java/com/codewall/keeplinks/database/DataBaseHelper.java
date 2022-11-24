@@ -1,4 +1,4 @@
-package com.ktz.keeplinks.database;
+package com.codewall.keeplinks.database;
 
 import android.content.ContentValues;
 import android.content.Context;

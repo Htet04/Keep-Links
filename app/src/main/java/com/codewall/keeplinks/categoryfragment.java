@@ -1,43 +1,36 @@
-package com.ktz.keeplinks;
+package com.codewall.keeplinks;
 
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-import com.ktz.keeplinks.database.DataBaseHelper;
-import com.ktz.keeplinks.databinding.FragmentCategoryfragmentBinding;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
+import com.codewall.keeplinks.databinding.FragmentCategoryfragmentBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class categoryfragment extends Fragment {
-FragmentCategoryfragmentBinding binding;
-List<Contacts> contacts;
+    FragmentCategoryfragmentBinding binding;
+    List<Contacts> contacts;
 
-DBHelper db;
-
-
-
+    DBHelper db;
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       binding=FragmentCategoryfragmentBinding.inflate(getLayoutInflater());
+        binding = FragmentCategoryfragmentBinding.inflate(getLayoutInflater());
 
-        contacts=new ArrayList<>();
+        contacts = new ArrayList<>();
 
-        db=new DBHelper(getContext());
-        contacts=db.getAllContacts();
-        MyAdapter myAdapter=new MyAdapter(contacts,getContext());
+        db = new DBHelper(getContext());
+        contacts = db.getAllContacts();
+        MyAdapter myAdapter = new MyAdapter(contacts, getContext());
         binding.fragment.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.fragment.setAdapter(myAdapter);
     }
@@ -46,13 +39,13 @@ DBHelper db;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_categoryfragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_categoryfragment, container, false);
 //b
 
 
-        binding.fab.setOnClickListener(v->{
+        binding.fab.setOnClickListener(v -> {
 
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame,new addlink()).commit();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame, new addlink()).commit();
         });
         return binding.getRoot();
     }

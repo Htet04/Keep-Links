@@ -1,4 +1,4 @@
-package com.ktz.keeplinks;
+package com.codewall.keeplinks;
 
 public class Contacts {
     String category;
