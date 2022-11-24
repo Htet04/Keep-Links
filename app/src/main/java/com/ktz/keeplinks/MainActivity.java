@@ -21,16 +21,18 @@ import com.ktz.keeplinks.ui.fragment.CategoryFragment;
 import com.ktz.keeplinks.ui.fragment.FavoriteFragment;
 import com.ktz.keeplinks.ui.fragment.HomeFragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
-
+List<Contacts> contactsList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         initialize();
     }
 
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 }
                 case R.id.menu_bnv_category: {
-                    showFragment(new CategoryFragment());
+                    showFragment(new categoryfragment());
                     break;
                 }
                 case R.id.menu_bnv_favorite: {

@@ -6,6 +6,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.ktz.keeplinks.Contacts;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class DataBaseHelper extends SQLiteOpenHelper {
 
     SQLiteDatabase db;
@@ -20,6 +25,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String NOTE = "note";
     public static final String SAVED_DATE = "saved_date";
 
+
     public DataBaseHelper(Context context){
         super(context,DATABASE_NAME,null,DATABASE_VERSION);
     }
@@ -31,6 +37,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 LINK + " TEXT, " +
                 CATEGORY + " TEXT, " +
                 NOTE + " TEXT, " +
+
                 SAVED_DATE + " TEXT);";
         db.execSQL(Query);
     }
@@ -47,17 +54,19 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         values.put(LINK, link);
         values.put(CATEGORY, category);
         values.put(NOTE, note);
+
         values.put(SAVED_DATE, saved_date);
         return db.insert(LINKS_TABLE, null, values);
     }
 
-    public void updateLink(long id, String link, String category, String note, String saved_date) {
+    public void updateLink(long id, String link, String category, String note, String saved_date,String title) {
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(LINK, link);
         values.put(CATEGORY, category);
         values.put(NOTE, note);
         values.put(SAVED_DATE, saved_date);
+
         db.update(LINKS_TABLE, values, ID + "=" + id, null);
     }
 
@@ -93,5 +102,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         String result = cursor.getString(4);
         cursor.close();
         return result;
+
     }
+
+
+
+
+
 }
