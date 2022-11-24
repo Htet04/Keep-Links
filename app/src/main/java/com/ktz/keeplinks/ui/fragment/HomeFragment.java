@@ -1,5 +1,6 @@
 package com.ktz.keeplinks.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.ktz.keeplinks.adapter.HomeAdapter;
 import com.ktz.keeplinks.databinding.FragmentHomeBinding;
+import com.ktz.keeplinks.ui.LinkEditorActivity;
 
 public class HomeFragment extends Fragment {
 
@@ -30,7 +32,7 @@ public class HomeFragment extends Fragment {
 
         binding.btnFab.setOnClickListener(v -> {
             // test code
-            new AddDialogFragment().show(getActivity().getSupportFragmentManager(),"TAG");
+            startActivity(new Intent(getContext(), LinkEditorActivity.class));
         });
         return binding.getRoot();
     }
