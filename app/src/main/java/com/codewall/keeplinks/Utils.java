@@ -1,11 +1,6 @@
-package com.ktz.keeplinks;
-
-import android.app.Activity;
-import android.content.Context;
+package com.codewall.keeplinks;
 
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 
 public class Utils {
 

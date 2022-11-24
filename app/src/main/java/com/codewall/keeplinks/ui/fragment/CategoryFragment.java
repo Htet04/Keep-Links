@@ -1,4 +1,4 @@
-package com.ktz.keeplinks.ui.fragment;
+package com.codewall.keeplinks.ui.fragment;
 
 import android.os.Bundle;
 
@@ -8,21 +8,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.ktz.keeplinks.R;
-import com.ktz.keeplinks.databinding.FragmentFavoriteBinding;
+import com.codewall.keeplinks.R;
+import com.codewall.keeplinks.databinding.FragmentCategoryBinding;
 
-public class FavoriteFragment extends Fragment {
+public class CategoryFragment extends Fragment {
 
-    FragmentFavoriteBinding binding;
+    FragmentCategoryBinding binding;
 
-    public FavoriteFragment() {
+    public CategoryFragment() {
         // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentFavoriteBinding.inflate(inflater,container,false);
+        binding = FragmentCategoryBinding.inflate(inflater,container,false);
+
         return binding.getRoot();
     }
 }

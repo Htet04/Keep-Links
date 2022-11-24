@@ -1,4 +1,4 @@
-package com.ktz.keeplinks.adapter;
+package com.codewall.keeplinks.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ktz.keeplinks.database.DataBaseHelper;
-import com.ktz.keeplinks.databinding.HomeRecyclerItemLayoutBinding;
+import com.codewall.keeplinks.database.DataBaseHelper;
+import com.codewall.keeplinks.databinding.HomeRecyclerItemLayoutBinding;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder> {
 

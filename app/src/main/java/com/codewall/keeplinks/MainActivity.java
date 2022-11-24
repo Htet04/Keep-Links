@@ -1,4 +1,4 @@
-package com.ktz.keeplinks;
+package com.codewall.keeplinks;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -15,11 +15,10 @@ import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.google.android.material.navigation.NavigationBarView;
-import com.ktz.keeplinks.databinding.ActivityMainBinding;
-import com.ktz.keeplinks.ui.fragment.CategoryFragment;
-import com.ktz.keeplinks.ui.fragment.FavoriteFragment;
-import com.ktz.keeplinks.ui.fragment.HomeFragment;
+import com.codewall.keeplinks.databinding.ActivityMainBinding;
+import com.codewall.keeplinks.ui.fragment.CategoryFragment;
+import com.codewall.keeplinks.ui.fragment.FavoriteFragment;
+import com.codewall.keeplinks.ui.fragment.HomeFragment;
 
 public class MainActivity extends AppCompatActivity {
 

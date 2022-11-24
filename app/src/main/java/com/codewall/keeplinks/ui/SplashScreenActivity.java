@@ -1,4 +1,4 @@
-package com.ktz.keeplinks.ui;
+package com.codewall.keeplinks.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 
-import com.ktz.keeplinks.MainActivity;
-import com.ktz.keeplinks.databinding.ActivitySplashScreenBinding;
+import com.codewall.keeplinks.MainActivity;
+import com.codewall.keeplinks.databinding.ActivitySplashScreenBinding;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashScreenActivity extends AppCompatActivity {

@@ -1,14 +1,12 @@
-package com.ktz.keeplinks.ui;
+package com.codewall.keeplinks.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.ktz.keeplinks.databinding.ActivityLinkEditorBinding;
+import com.codewall.keeplinks.databinding.ActivityLinkEditorBinding;
 
 public class LinkEditorActivity extends AppCompatActivity {
 

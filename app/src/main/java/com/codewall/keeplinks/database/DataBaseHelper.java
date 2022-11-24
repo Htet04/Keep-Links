@@ -1,4 +1,4 @@
-package com.ktz.keeplinks.database;
+package com.codewall.keeplinks.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -27,7 +27,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String Query = "CREATE TABLE " + LINKS_TABLE + "(" +
+        String Query = " CREATE TABLE " + LINKS_TABLE + "(" +
                 ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 NAME+" TEXT,"+
                 LINK + " TEXT, " +

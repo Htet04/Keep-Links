@@ -1,4 +1,4 @@
-package com.ktz.keeplinks;
+package com.codewall.keeplinks;
 
 import org.junit.Test;
 

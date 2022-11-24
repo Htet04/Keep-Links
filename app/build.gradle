@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace 'com.ktz.keeplinks'
+    namespace 'com.codewall.keeplinks'
     compileSdk 32
 
     buildFeatures{
@@ -11,7 +11,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.ktz.keeplinks"
+        applicationId "com.codewall.keeplinks"
         minSdk 26
         targetSdk 32
         versionCode 1
