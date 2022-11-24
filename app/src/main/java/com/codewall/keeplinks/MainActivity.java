@@ -1,4 +1,4 @@
-package com.codewall.keeplinks;
+package com.ktz.keeplinks;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -15,10 +15,11 @@ import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.codewall.keeplinks.databinding.ActivityMainBinding;
-import com.codewall.keeplinks.ui.fragment.CategoryFragment;
-import com.codewall.keeplinks.ui.fragment.FavoriteFragment;
-import com.codewall.keeplinks.ui.fragment.HomeFragment;
+import com.google.android.material.navigation.NavigationBarView;
+import com.ktz.keeplinks.databinding.ActivityMainBinding;
+import com.ktz.keeplinks.ui.fragment.CategoryFragment;
+import com.ktz.keeplinks.ui.fragment.FavoriteFragment;
+import com.ktz.keeplinks.ui.fragment.HomeFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,8 +30,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        setSupportActionBar(binding.toolbar);
 
         initialize();
     }
@@ -79,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 Toast.makeText(MainActivity.this, query, Toast.LENGTH_SHORT).show();
-                return true;
+                return false;
             }
 
             @Override
@@ -87,21 +86,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast T=Toast.makeText(MainActivity.this, newText, Toast.LENGTH_SHORT);
                 T.setGravity(Gravity.CENTER,0,0);
                 T.show();
-                return true;
-            }
-        });
-
-        menu.findItem(R.id.menu_toolbar_search).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                Toast.makeText(MainActivity.this, String.valueOf(item.getGroupId()), Toast.LENGTH_SHORT).show();
-                return true;
-            }
-        });
-
-        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
-            @Override
-            public boolean onClose() {
                 return false;
             }
         });
@@ -111,8 +95,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        Toast.makeText(getApplicationContext(),String.valueOf(item.getGroupId()),Toast.LENGTH_SHORT).show();
 
         if (item.isCheckable()){
             item.setChecked(true);
