@@ -15,4 +15,7 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:navigationBarColor">@color/white</item>
     </style>
+    <style name="Theme.KeepLinks.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="android:layout_margin">6dp</item>
+    </style>
 </resources>

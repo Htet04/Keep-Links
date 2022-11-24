@@ -20,16 +20,9 @@ public class FavoriteFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = FragmentFavoriteBinding.inflate(getLayoutInflater());
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
+        binding = FragmentFavoriteBinding.inflate(inflater,container,false);
         return binding.getRoot();
     }
 }

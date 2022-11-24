@@ -20,15 +20,10 @@ public class CategoryFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = FragmentCategoryBinding.inflate(getLayoutInflater());
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        binding = FragmentCategoryBinding.inflate(inflater,container,false);
+
         return binding.getRoot();
     }
 }
