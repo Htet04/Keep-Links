@@ -20,6 +20,7 @@ import com.codewall.keeplinks.databinding.ActivityMainBinding;
 import com.codewall.keeplinks.ui.fragment.CategoryFragment;
 import com.codewall.keeplinks.ui.fragment.FavoriteFragment;
 import com.codewall.keeplinks.ui.fragment.HomeFragment;
+import com.codewall.keeplinks.util.Utils;
 
 public class MainActivity extends AppCompatActivity {
 

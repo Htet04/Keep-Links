@@ -1,4 +1,4 @@
-package com.codewall.keeplinks;
+package com.codewall.keeplinks.util;
 
 import androidx.appcompat.app.AppCompatDelegate;
 
