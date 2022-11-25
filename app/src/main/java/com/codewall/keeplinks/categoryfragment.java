@@ -20,6 +20,8 @@ public class categoryfragment extends Fragment {
 
     DBHelper db;
 
+    /*TODO: Already exist Delete this fragment*/
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
