@@ -19,10 +19,13 @@
             android:name=".ui.LinkEditorActivity"
             android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
-            android:exported="true"
-            android:launchMode="singleInstance"
+            android:exported="true">
+            <!--
+            Not understanding codes
             android:noHistory="true"
-            android:excludeFromRecents="true">
+            android:launchMode="singleInstance"
+            android:excludeFromRecents="true"
+            -->
             <!--<intent-filter
                 android:icon="@drawable/ic_round_add_link_24"
                 android:label="Add Link">

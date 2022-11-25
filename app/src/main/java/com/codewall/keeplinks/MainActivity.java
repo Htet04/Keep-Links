@@ -15,6 +15,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.codewall.keeplinks.database.DataBaseHelper;
 import com.codewall.keeplinks.databinding.ActivityMainBinding;
 import com.codewall.keeplinks.ui.fragment.CategoryFragment;
 import com.codewall.keeplinks.ui.fragment.FavoriteFragment;
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         // on App start view
         // can change to user last chose by using SharedPreference
         showFragment(new HomeFragment());
+
+        DataBaseHelper db = new DataBaseHelper(getApplicationContext());
 
         binding.mainBnv.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
