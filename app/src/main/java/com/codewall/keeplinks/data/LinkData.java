@@ -1,9 +1,16 @@
 package com.codewall.keeplinks.data;
 
+
+/**
+ * @author Khun Thein Zaw
+ * @deprecated သုံးရတာ အလုပ်ရှုပ်လို့ deprecated ထားထားတယ်။
+ */
+@Deprecated
 public class LinkData {
-    private String name,link,category,note,date;
+    private String name, link, category, note, date;
 
     public LinkData(String name, String link, String category, String note, String date) {
+
         this.name = name;
         this.link = link;
         this.category = category;

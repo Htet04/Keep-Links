@@ -28,7 +28,7 @@ public class LinkEditorActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         String sharedText = getIntent().getStringExtra(Intent.EXTRA_TEXT);
-        if (sharedText!=null) {
+        if (sharedText != null) {
             binding.link.setText(sharedText);
         }
         DataBaseHelper db = new DataBaseHelper(getApplicationContext());
@@ -38,8 +38,8 @@ public class LinkEditorActivity extends AppCompatActivity {
                     category = binding.category.getText().toString(),
                     note = binding.note.getText().toString(),
                     date = binding.date.getText().toString();
-            long status = db.addLink(name,link,category,note,date);
-            if (status!=-1){
+            long status = db.addLink(name, link, category, note, date);
+            if (status != -1) {
                 Toast.makeText(this, "Add Success", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "Add Fail", Toast.LENGTH_SHORT).show();

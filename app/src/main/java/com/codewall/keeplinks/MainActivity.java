@@ -41,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
         // can change to user last chose by using SharedPreference
         showFragment(new HomeFragment());
 
-        DataBaseHelper db = new DataBaseHelper(getApplicationContext());
-
         binding.mainBnv.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.menu_bnv_home: {
@@ -87,8 +85,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                Toast T=Toast.makeText(MainActivity.this, newText, Toast.LENGTH_SHORT);
-                T.setGravity(Gravity.CENTER,0,0);
+                Toast T = Toast.makeText(MainActivity.this, newText, Toast.LENGTH_SHORT);
+                T.setGravity(Gravity.CENTER, 0, 0);
                 T.show();
                 return false;
             }
@@ -100,14 +98,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        if (item.isCheckable()){
+        if (item.isCheckable()) {
             item.setChecked(true);
-            switch (item.getItemId()){
-                case R.id.theme_light:{
+            switch (item.getItemId()) {
+                case R.id.theme_light: {
                     Utils.setTheme(AppCompatDelegate.MODE_NIGHT_NO);
                     break;
                 }
-                case R.id.theme_dark:{
+                case R.id.theme_dark: {
                     Utils.setTheme(AppCompatDelegate.MODE_NIGHT_YES);
                     break;
                 }
