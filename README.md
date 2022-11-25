@@ -34,6 +34,9 @@ All id from <strong>SplashScreenActivity</strong>
 
 All id from <strong>LinkEditorActivity</strong>
 
+* appbarLayout (AppBarLayout)
+* toolbar (ToolBar)
+<br><br>
 * nameLayout (TextInputLayout)
 * linkLayout (TextInputLayout)
 * categoryLayout (TextInputLayout)
@@ -45,6 +48,9 @@ All id from <strong>LinkEditorActivity</strong>
 * category (TextInputEditText)
 * date (TextInputEditText)
 * note (TextInputEditText)
+<br><br>
+* btn_cancel (MaterialButton)
+* btn_add (MaterialButton)
 
 
 
@@ -64,6 +70,10 @@ All id from <strong>HomeFragment</strong>
 * btn_fab (FloatingActionButton)
 
 ### CategoryFragment
+
+All id from <strong>CategoryFragment</strong>
+* category_recycler (RrcyclerView)
+* btn_fab (FloatingActionButton)
 
 ### FavoriteFragment
 
