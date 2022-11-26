@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
                     showFragment(new CategoryFragment(binding.mainFab));
                     break;
                 }
+                /*
+                tempo code
                 case R.id.menu_bnv_favorite: {
                     showFragment(new FavoriteFragment());
                     break;
@@ -53,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.menu_bnv_settings:{
 
                     break;
-                }
+                }*/
             }
             return true;
         });
