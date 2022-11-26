@@ -17,6 +17,7 @@ import com.codewall.keeplinks.adapter.HomeAdapter;
 import com.codewall.keeplinks.database.DataBaseHelper;
 import com.codewall.keeplinks.databinding.FragmentHomeBinding;
 import com.codewall.keeplinks.ui.LinkEditorActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class HomeFragment extends Fragment {
 
@@ -34,8 +35,11 @@ public class HomeFragment extends Fragment {
         }
     });
 
-    public HomeFragment() {
+    public HomeFragment(FloatingActionButton mainFab) {
         // Required empty public constructor
+        mainFab.setOnClickListener(v -> {
+            launcher.launch(new Intent(getContext(), LinkEditorActivity.class));
+        });
     }
 
     @Override
@@ -47,11 +51,6 @@ public class HomeFragment extends Fragment {
         db = new DataBaseHelper(getContext());
         binding.homeRecycler.setAdapter(new HomeAdapter(db));
 
-        binding.btnFab.setOnClickListener(v -> {
-            // test code
-//            startActivity(new Intent(getContext(), LinkEditorActivity.class));
-            launcher.launch(new Intent(getContext(), LinkEditorActivity.class));
-        });
         return binding.getRoot();
     }
 }

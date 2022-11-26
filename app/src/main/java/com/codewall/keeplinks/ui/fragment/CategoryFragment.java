@@ -9,15 +9,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.codewall.keeplinks.R;
 import com.codewall.keeplinks.adapter.CategoryAdapter;
 import com.codewall.keeplinks.databinding.FragmentCategoryBinding;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class CategoryFragment extends Fragment {
 
     FragmentCategoryBinding binding;
 
-    public CategoryFragment() {
+    public CategoryFragment(FloatingActionButton mainFab) {
         // Required empty public constructor
     }
 

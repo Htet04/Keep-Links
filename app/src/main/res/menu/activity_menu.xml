@@ -5,25 +5,8 @@
     <item
         android:id="@+id/menu_toolbar_search"
         android:icon="@drawable/ic_round_search_24"
-        android:iconTint="@color/white"
+        android:iconTint="@color/blackwhite"
         android:title="Search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="always" />
-    <item
-        android:title="Theme">
-        <menu>
-            <group android:checkableBehavior="single"
-                android:id="@+id/theme_group">
-                <item
-                    android:id="@+id/theme_light"
-                    android:title="Light" />
-                <item
-                    android:id="@+id/theme_dark"
-                    android:title="Dark"/>
-                <item
-                    android:id="@+id/theme_system"
-                    android:title="Follow System Setting"/>
-            </group>
-        </menu>
-    </item>
 </menu>

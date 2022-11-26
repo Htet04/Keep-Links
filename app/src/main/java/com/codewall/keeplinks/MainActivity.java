@@ -4,23 +4,18 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.codewall.keeplinks.database.DataBaseHelper;
 import com.codewall.keeplinks.databinding.ActivityMainBinding;
 import com.codewall.keeplinks.ui.fragment.CategoryFragment;
 import com.codewall.keeplinks.ui.fragment.FavoriteFragment;
 import com.codewall.keeplinks.ui.fragment.HomeFragment;
-import com.codewall.keeplinks.util.Utils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,20 +34,24 @@ public class MainActivity extends AppCompatActivity {
     private void initialize() {
         // on App start view
         // can change to user last chose by using SharedPreference
-        showFragment(new HomeFragment());
+        showFragment(new HomeFragment(binding.mainFab));
 
         binding.mainBnv.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.menu_bnv_home: {
-                    showFragment(new HomeFragment());
+                    showFragment(new HomeFragment(binding.mainFab));
                     break;
                 }
                 case R.id.menu_bnv_category: {
-                    showFragment(new CategoryFragment());
+                    showFragment(new CategoryFragment(binding.mainFab));
                     break;
                 }
                 case R.id.menu_bnv_favorite: {
                     showFragment(new FavoriteFragment());
+                    break;
+                }
+                case R.id.menu_bnv_settings:{
+
                     break;
                 }
             }
@@ -93,29 +92,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        if (item.isCheckable()) {
-            item.setChecked(true);
-            switch (item.getItemId()) {
-                case R.id.theme_light: {
-                    Utils.setTheme(AppCompatDelegate.MODE_NIGHT_NO);
-                    break;
-                }
-                case R.id.theme_dark: {
-                    Utils.setTheme(AppCompatDelegate.MODE_NIGHT_YES);
-                    break;
-                }
-                case R.id.theme_system: {
-                    Utils.setTheme(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-                    break;
-                }
-            }
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     private void showFragment(Fragment fragment) {
