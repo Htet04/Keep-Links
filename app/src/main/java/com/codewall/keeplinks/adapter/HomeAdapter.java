@@ -5,10 +5,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.codewall.keeplinks.R;
 import com.codewall.keeplinks.database.DataBaseHelper;
 import com.codewall.keeplinks.databinding.HomeItemLayoutBinding;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder> {
 
@@ -31,6 +34,13 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
         /*binding.linkName.setText(db.getValue(position, DataBaseHelper.K_NAME));
         binding.linktext.setText(db.getValue(position, DataBaseHelper.K_LINK));
         binding.savedDate.setText(db.getValue(position, DataBaseHelper.K_SAVED_DATE));*/
+        holder.itemView.setOnClickListener(v -> {
+            BottomSheetDialog dialog = new BottomSheetDialog(holder.itemView.getContext());
+            dialog.setTitle("Test");
+            dialog.setContentView(R.layout.bottom_sheet_layout);
+            dialog.create();
+            dialog.show();
+        });
     }
 
     @Override
