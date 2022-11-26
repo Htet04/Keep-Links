@@ -3,15 +3,14 @@ package com.codewall.keeplinks.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.codewall.keeplinks.R;
 import com.codewall.keeplinks.database.DataBaseHelper;
 import com.codewall.keeplinks.databinding.HomeItemLayoutBinding;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.codewall.keeplinks.util.SheetDialog;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder> {
 
@@ -35,10 +34,24 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
         binding.linktext.setText(db.getValue(position, DataBaseHelper.K_LINK));
         binding.savedDate.setText(db.getValue(position, DataBaseHelper.K_SAVED_DATE));*/
         holder.itemView.setOnClickListener(v -> {
-            BottomSheetDialog dialog = new BottomSheetDialog(holder.itemView.getContext());
+            /*BottomSheetDialog dialog = new BottomSheetDialog(holder.itemView.getContext());
             dialog.setTitle("Test");
             dialog.setContentView(R.layout.bottom_sheet_layout);
             dialog.create();
+            dialog.show();*/
+            SheetDialog dialog = new SheetDialog(holder.itemView.getContext());
+            dialog.setOnPositiveButtonClickListener(new SheetDialog.OnPositiveButtonClickListener() {
+                @Override
+                public void onPositiveButtonClicked() {
+                    Toast.makeText(holder.itemView.getContext(), "Positive", Toast.LENGTH_SHORT).show();
+                }
+            });
+            dialog.setOnNegativeButtonClickListener(new SheetDialog.OnNegativeButtonClickListener() {
+                @Override
+                public void onNegativeButtonClicked() {
+                    Toast.makeText(holder.itemView.getContext(), "Negative", Toast.LENGTH_SHORT).show();
+                }
+            });
             dialog.show();
         });
     }
@@ -49,7 +62,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
         return 30;
     }
 
-    class HomeViewHolder extends RecyclerView.ViewHolder {
+    public class HomeViewHolder extends RecyclerView.ViewHolder {
         public HomeViewHolder(@NonNull View itemView) {
             super(itemView);
         }
