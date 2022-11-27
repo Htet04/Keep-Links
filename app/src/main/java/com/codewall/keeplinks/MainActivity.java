@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.codewall.keeplinks.databinding.ActivityMainBinding;
+import com.codewall.keeplinks.ui.fragment.BrowserFragment;
 import com.codewall.keeplinks.ui.fragment.CategoryFragment;
 import com.codewall.keeplinks.ui.fragment.HomeFragment;
 
@@ -46,12 +47,10 @@ public class MainActivity extends AppCompatActivity {
                     showFragment(new CategoryFragment());
                     break;
                 }
-                /*
-                tempo code
-                case R.id.menu_bnv_favorite: {
-                    showFragment(new FavoriteFragment());
+                case R.id.browser:{
+                    showFragment(new BrowserFragment());
                     break;
-                }*/
+                }
             }
             return true;
         });
