@@ -2,9 +2,11 @@ package com.codewall.keeplinks.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -13,6 +15,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.codewall.keeplinks.MainActivity;
 import com.codewall.keeplinks.adapter.HomeAdapter;
 import com.codewall.keeplinks.database.DataBaseHelper;
 import com.codewall.keeplinks.databinding.FragmentHomeBinding;
@@ -36,10 +39,19 @@ public class HomeFragment extends Fragment {
     });
 
     public HomeFragment(FloatingActionButton mainFab) {
-        // Required empty public constructor
-        mainFab.setOnClickListener(v -> {
-            launcher.launch(new Intent(getContext(), LinkEditorActivity.class));
-        });
+        // need to fix FAB
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.i("bts", "onDestroy: ");
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Log.i("bts", "onDetach: ");
     }
 
     @Override
