@@ -40,17 +40,20 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
             dialog.create();
             dialog.show();*/
             SheetDialog dialog = new SheetDialog(holder.itemView.getContext());
-            dialog.setOnPositiveButtonClickListener(new SheetDialog.OnPositiveButtonClickListener() {
-                @Override
-                public void onPositiveButtonClicked() {
-                    Toast.makeText(holder.itemView.getContext(), "Positive", Toast.LENGTH_SHORT).show();
-                }
+            dialog.setOnCopyButtonClickListener(()->{
+                Toast.makeText(holder.itemView.getContext(), "Copy button click", Toast.LENGTH_SHORT).show();
             });
-            dialog.setOnNegativeButtonClickListener(new SheetDialog.OnNegativeButtonClickListener() {
-                @Override
-                public void onNegativeButtonClicked() {
-                    Toast.makeText(holder.itemView.getContext(), "Negative", Toast.LENGTH_SHORT).show();
-                }
+            dialog.setOnEditButtonClickListener(()->{
+                Toast.makeText(holder.itemView.getContext(), "Edit button click", Toast.LENGTH_SHORT).show();
+            });
+            dialog.setOnOpenButtonClickListener(()->{
+                Toast.makeText(holder.itemView.getContext(), "Open button click", Toast.LENGTH_SHORT).show();
+            });
+            dialog.setOnShareButtonClickListener(()->{
+                Toast.makeText(holder.itemView.getContext(), "Share button click", Toast.LENGTH_SHORT).show();
+            });
+            dialog.setOnDeleteButtonClickListener(()->{
+                Toast.makeText(holder.itemView.getContext(), "Delete button click", Toast.LENGTH_SHORT).show();
             });
             dialog.show();
         });
