@@ -6,6 +6,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.widget.SearchView;
@@ -14,7 +15,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.codewall.keeplinks.databinding.ActivityMainBinding;
 import com.codewall.keeplinks.ui.fragment.CategoryFragment;
-import com.codewall.keeplinks.ui.fragment.FavoriteFragment;
 import com.codewall.keeplinks.ui.fragment.HomeFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,26 +34,22 @@ public class MainActivity extends AppCompatActivity {
     private void initialize() {
         // on App start view
         // can change to user last chose by using SharedPreference
-        showFragment(new HomeFragment(binding.mainFab));
+        showFragment(new HomeFragment());
 
         binding.mainBnv.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.menu_bnv_home: {
-                    showFragment(new HomeFragment(binding.mainFab));
+                    showFragment(new HomeFragment());
                     break;
                 }
                 case R.id.menu_bnv_category: {
-                    showFragment(new CategoryFragment(binding.mainFab));
+                    showFragment(new CategoryFragment());
                     break;
                 }
                 /*
                 tempo code
                 case R.id.menu_bnv_favorite: {
                     showFragment(new FavoriteFragment());
-                    break;
-                }
-                case R.id.menu_bnv_settings:{
-
                     break;
                 }*/
             }
@@ -94,6 +90,18 @@ public class MainActivity extends AppCompatActivity {
         });
 
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("bnv",binding.mainBnv.getSelectedItemId());
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        binding.mainBnv.setSelectedItemId(savedInstanceState.getInt("bnv"));
     }
 
     private void showFragment(Fragment fragment) {

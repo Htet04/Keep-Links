@@ -33,12 +33,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
         /*binding.linkName.setText(db.getValue(position, DataBaseHelper.K_NAME));
         binding.linktext.setText(db.getValue(position, DataBaseHelper.K_LINK));
         binding.savedDate.setText(db.getValue(position, DataBaseHelper.K_SAVED_DATE));*/
-        holder.itemView.setOnClickListener(v -> {
-            /*BottomSheetDialog dialog = new BottomSheetDialog(holder.itemView.getContext());
-            dialog.setTitle("Test");
-            dialog.setContentView(R.layout.bottom_sheet_layout);
-            dialog.create();
-            dialog.show();*/
+        holder.itemView.setOnLongClickListener(v ->{
             SheetDialog dialog = new SheetDialog(holder.itemView.getContext());
             dialog.setOnCopyButtonClickListener(()->{
                 Toast.makeText(holder.itemView.getContext(), "Copy button click", Toast.LENGTH_SHORT).show();
@@ -56,6 +51,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
                 Toast.makeText(holder.itemView.getContext(), "Delete button click", Toast.LENGTH_SHORT).show();
             });
             dialog.show();
+            return true;
         });
     }
 

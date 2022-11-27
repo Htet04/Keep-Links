@@ -8,18 +8,15 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.codewall.keeplinks.MainActivity;
 import com.codewall.keeplinks.adapter.CategoryAdapter;
 import com.codewall.keeplinks.databinding.FragmentCategoryBinding;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class CategoryFragment extends Fragment {
 
     FragmentCategoryBinding binding;
 
-    public CategoryFragment(FloatingActionButton mainFab) {
+    public CategoryFragment() {
         // Need to fix FAB
     }
 

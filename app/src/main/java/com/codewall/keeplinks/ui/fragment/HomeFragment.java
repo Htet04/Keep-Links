@@ -6,21 +6,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.codewall.keeplinks.MainActivity;
 import com.codewall.keeplinks.adapter.HomeAdapter;
 import com.codewall.keeplinks.database.DataBaseHelper;
 import com.codewall.keeplinks.databinding.FragmentHomeBinding;
-import com.codewall.keeplinks.ui.LinkEditorActivity;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class HomeFragment extends Fragment {
 
@@ -38,7 +36,7 @@ public class HomeFragment extends Fragment {
         }
     });
 
-    public HomeFragment(FloatingActionButton mainFab) {
+    public HomeFragment() {
         // need to fix FAB
     }
 
