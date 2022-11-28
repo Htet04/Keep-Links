@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.codewall.keeplinks.data.CateData;
 import com.codewall.keeplinks.data.LinkData;
 
 import java.util.ArrayList;
@@ -109,6 +110,17 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             cursor.close();
         }
         return list;
+    }
+
+    public List<CateData> getDa(){
+        List<CateData> list=new ArrayList<>();
+        db=this.getReadableDatabase();
+        Cursor cursor=db.rawQuery("Select * from "+LINKS_TABLE,null);
+        while (cursor.moveToNext()){
+            String name=cursor.getString(K_NAME);
+            list.add(new CateData(name));
+        }return list;
+
     }
 
     public String getValue(int id, int index) {

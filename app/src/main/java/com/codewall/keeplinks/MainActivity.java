@@ -13,6 +13,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.codewall.keeplinks.adapter.MyDialog;
 import com.codewall.keeplinks.databinding.ActivityMainBinding;
 import com.codewall.keeplinks.ui.fragment.BrowserFragment;
 import com.codewall.keeplinks.ui.fragment.CategoryFragment;
@@ -30,6 +31,12 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(binding.toolbar);
 
         initialize();
+
+    }
+
+    private void openDialog() {
+        MyDialog myDialog=new MyDialog();
+        myDialog.show(getSupportFragmentManager(),"mydialog");
     }
 
     private void initialize() {
@@ -45,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 case R.id.menu_bnv_category: {
                     showFragment(new CategoryFragment());
+
+
                     break;
                 }
                 case R.id.browser:{
@@ -58,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
             // to prevent content reload
         });
     }
+
 
     @SuppressLint("RestrictedApi")
     @Override

@@ -2,6 +2,7 @@ package com.codewall.keeplinks.ui.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 
@@ -10,23 +11,40 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.codewall.keeplinks.adapter.CategoryAdapter;
+import com.codewall.keeplinks.adapter.MyDialog;
+import com.codewall.keeplinks.data.CateData;
+import com.codewall.keeplinks.database.DataBaseHelper;
 import com.codewall.keeplinks.databinding.FragmentCategoryBinding;
 
+import java.util.ArrayList;
+
 public class CategoryFragment extends Fragment {
-
+ArrayList<CateData> arrayList;
     FragmentCategoryBinding binding;
+DataBaseHelper db;
 
-    public CategoryFragment() {
-        // Need to fix FAB
-    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        arrayList=new ArrayList<>();
+
+db=new DataBaseHelper(getContext());
+arrayList= (ArrayList<CateData>) db.getDa();
+        arrayList.add(new CateData("hello"));
         binding = FragmentCategoryBinding.inflate(inflater,container,false);
         binding.categoryRecycler.setHasFixedSize(true);
+        CategoryAdapter adapter=new CategoryAdapter(arrayList);
         binding.categoryRecycler.setLayoutManager(new GridLayoutManager(getContext(),2));
-        binding.categoryRecycler.setAdapter(new CategoryAdapter());
+        binding.categoryRecycler.setAdapter(adapter);
+
+        binding.btnFab.setOnClickListener(v->{
+            MyDialog myDialog=new MyDialog();
+            myDialog.show(getActivity().getSupportFragmentManager(),"my");
+        });
         return binding.getRoot();
+
     }
 }
+
