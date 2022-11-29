@@ -20,7 +20,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String ID = "id";
     public static final String NAME = "name";
     public static final String LINK = "link";
-    public static final String CATEGORY = "cateogry";
+    public static final String CATEGORY = "category";
     public static final String NOTE = "note";
     public static final String SAVED_DATE = "saved_date";
     public static final int K_NAME = 1;
@@ -119,7 +119,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         while (cursor.moveToNext()){
             String name=cursor.getString(K_CATEGORY);
             list.add(new CateData(name));
-        }return list;
+        }
+        cursor.close();
+        return list;
 
     }
 
