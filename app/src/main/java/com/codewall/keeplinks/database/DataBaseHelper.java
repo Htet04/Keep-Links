@@ -117,7 +117,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db=this.getReadableDatabase();
         Cursor cursor=db.rawQuery("Select * from "+LINKS_TABLE,null);
         while (cursor.moveToNext()){
-            String name=cursor.getString(K_NAME);
+            String name=cursor.getString(K_CATEGORY);
             list.add(new CateData(name));
         }return list;
 
