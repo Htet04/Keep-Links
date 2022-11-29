@@ -13,7 +13,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.codewall.keeplinks.adapter.MyDialog;
+import com.codewall.keeplinks.ui.dialog.MyDialog;
 import com.codewall.keeplinks.databinding.ActivityMainBinding;
 import com.codewall.keeplinks.ui.fragment.BrowserFragment;
 import com.codewall.keeplinks.ui.fragment.CategoryFragment;

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.codewall.keeplinks.database.DataBaseHelper;
 import com.codewall.keeplinks.databinding.HomeItemLayoutBinding;
-import com.codewall.keeplinks.util.SheetDialog;
+import com.codewall.keeplinks.ui.dialog.SheetDialog;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder> {
 

@@ -1,4 +1,4 @@
-package com.codewall.keeplinks.util;
+package com.codewall.keeplinks.ui.dialog;
 
 import android.content.Context;
 import android.view.LayoutInflater;
