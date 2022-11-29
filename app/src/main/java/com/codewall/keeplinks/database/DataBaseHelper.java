@@ -112,7 +112,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return list;
     }
 
-    public List<CateData> getDa(){
+    public List<CateData> getCategoryList(){
         List<CateData> list=new ArrayList<>();
         db=this.getReadableDatabase();
         Cursor cursor=db.rawQuery("Select * from "+LINKS_TABLE,null);

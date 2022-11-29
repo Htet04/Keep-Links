@@ -28,7 +28,7 @@ public class CategoryFragment extends Fragment {
         arrayList = new ArrayList<>();
 
         db = new DataBaseHelper(getContext());
-        arrayList = (ArrayList<CateData>) db.getDa();
+        arrayList = (ArrayList<CateData>) db.getCategoryList();
         arrayList.add(new CateData("hello"));
         binding = FragmentCategoryBinding.inflate(inflater, container, false);
         binding.categoryRecycler.setHasFixedSize(true);
