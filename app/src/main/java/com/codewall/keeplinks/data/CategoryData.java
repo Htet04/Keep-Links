@@ -8,13 +8,22 @@ import java.util.List;
 
 public class CategoryData extends ArrayList<HashMap<String,Object>> {
 
-    HashMap<String, Object> map;
-    List<String> links;
+    private HashMap<String, Object> map;
+    private List<String> links;
 
     public CategoryData(){
 
     }
 
+    /**
+     * Add Category Only*/
+    public void add(String category){
+        links = new ArrayList<>();
+        this.add(category,links);
+    }
+
+    /**
+     * Add Category Super Method*/
     public boolean add(String category,List<String> links) {
         map = new HashMap<>();
         map.put("category",category);
@@ -22,10 +31,8 @@ public class CategoryData extends ArrayList<HashMap<String,Object>> {
         return super.add(map);
     }
 
-    public boolean contains(String category) {
-        return super.contains(category);
-    }
-
+    /**
+     * Add Link to an Exist Category*/
     public void addLink(String category, String link){
         List<String> l = new ArrayList<>();
         if (contains(category)) {
@@ -34,6 +41,14 @@ public class CategoryData extends ArrayList<HashMap<String,Object>> {
         this.add(category,l);
     }
 
+    /**
+     * Check is Category contained*/
+    public boolean contains(String category) {
+        return super.contains(category);
+    }
+
+    /**
+     * Get All link from an Category*/
     public List<String> getLinks(String category){
         links = new ArrayList<>();
         for (int i = 0; i < this.size(); i++) {
@@ -44,6 +59,8 @@ public class CategoryData extends ArrayList<HashMap<String,Object>> {
         return links;
     }
 
+    /**
+     * Get the size of link from an Category*/
     public int linkSize(String category){
         return getLinks(category).size();
     }
