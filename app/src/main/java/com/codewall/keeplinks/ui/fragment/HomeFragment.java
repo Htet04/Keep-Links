@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.codewall.keeplinks.adapter.HomeAdapter;
 import com.codewall.keeplinks.database.DataBaseHelper;
 import com.codewall.keeplinks.databinding.FragmentHomeBinding;
+import com.codewall.keeplinks.ui.LinkEditorActivity;
 
 public class HomeFragment extends Fragment {
 
@@ -41,18 +42,6 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.i("bts", "onDestroy: ");
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        Log.i("bts", "onDetach: ");
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
@@ -61,6 +50,9 @@ public class HomeFragment extends Fragment {
         db = new DataBaseHelper(getContext());
         binding.homeRecycler.setAdapter(new HomeAdapter(db));
 
+        binding.btnFab.setOnClickListener(v -> {
+            launcher.launch(new Intent(getContext(), LinkEditorActivity.class));
+        });
         return binding.getRoot();
     }
 }

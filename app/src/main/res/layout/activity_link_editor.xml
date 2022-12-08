@@ -24,7 +24,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nameLayout"
         android:hint="Link Name"
-        style="@style/Theme.KeepLinks.TextInputLayout"
+        style="@style/Theme.KeepLinks.TextInputLayout.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/appbarLayout">
@@ -36,7 +36,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/linkLayout"
         android:hint="Link"
-        style="@style/Theme.KeepLinks.TextInputLayout"
+        style="@style/Theme.KeepLinks.TextInputLayout.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/nameLayout">
@@ -48,11 +48,11 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/categoryLayout"
         android:hint="category"
-        style="@style/Theme.KeepLinks.TextInputLayout"
+        style="@style/Theme.KeepLinks.TextInputLayout.Drop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/linkLayout">
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
             android:id="@+id/category"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
@@ -60,7 +60,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/dateLayout"
         android:hint="Date"
-        style="@style/Theme.KeepLinks.TextInputLayout"
+        style="@style/Theme.KeepLinks.TextInputLayout.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/categoryLayout">
@@ -72,7 +72,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/noteLayout"
         android:hint="Note"
-        style="@style/Theme.KeepLinks.TextInputLayout"
+        style="@style/Theme.KeepLinks.TextInputLayout.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/dateLayout">
