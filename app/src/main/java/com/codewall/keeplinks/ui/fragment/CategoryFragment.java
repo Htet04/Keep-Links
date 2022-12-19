@@ -13,6 +13,7 @@ import com.codewall.keeplinks.adapter.CategoryAdapter;
 import com.codewall.keeplinks.data.CateData;
 import com.codewall.keeplinks.database.DataBaseHelper;
 import com.codewall.keeplinks.databinding.FragmentCategoryBinding;
+import com.codewall.keeplinks.ui.dialog.AddCategoryDialog;
 import com.codewall.keeplinks.ui.dialog.MyDialog;
 
 import java.util.ArrayList;
@@ -38,8 +39,10 @@ public class CategoryFragment extends Fragment {
         binding.categoryRecycler.setAdapter(adapter);
 
         binding.btnFab.setOnClickListener(v -> {
-            MyDialog myDialog = new MyDialog();
-            myDialog.show(getActivity().getSupportFragmentManager(), "my");
+            /*MyDialog myDialog = new MyDialog();
+            myDialog.show(getActivity().getSupportFragmentManager(), "my");*/
+            AddCategoryDialog dialog = new AddCategoryDialog(getContext());
+            dialog.show();
         });
         return binding.getRoot();
 
