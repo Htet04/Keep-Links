@@ -18,8 +18,10 @@
         <activity
             android:name=".ui.LinkEditorActivity"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
+            tools:ignore="LockedOrientationActivity">
             <!--
             Not understanding codes
             android:noHistory="true"
@@ -39,7 +41,9 @@
         <activity
             android:name=".ui.SplashScreenActivity"
             android:exported="true"
-            android:theme="@style/Theme.KeepLinks.FullScreen">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.KeepLinks.FullScreen"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -52,7 +56,11 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false">
+            android:exported="false"
+            android:configChanges="keyboardHidden|smallestScreenSize|screenSize|screenLayout"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
