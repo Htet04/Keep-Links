@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 import com.codewall.keeplinks.R;
 import com.codewall.keeplinks.database.DataBaseHelper;
 
+@Deprecated
 public class MyDialog extends AppCompatDialogFragment {
     public String str;
     @NonNull
@@ -23,7 +24,6 @@ public class MyDialog extends AppCompatDialogFragment {
     DataBaseHelper db;
 
     @Override
-
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         super.onCreateDialog(savedInstanceState);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

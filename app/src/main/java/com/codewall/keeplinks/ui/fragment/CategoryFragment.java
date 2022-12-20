@@ -15,6 +15,7 @@ import com.codewall.keeplinks.database.DataBaseHelper;
 import com.codewall.keeplinks.databinding.FragmentCategoryBinding;
 import com.codewall.keeplinks.ui.dialog.AddCategoryDialog;
 import com.codewall.keeplinks.ui.dialog.MyDialog;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
@@ -42,6 +43,7 @@ public class CategoryFragment extends Fragment {
             /*MyDialog myDialog = new MyDialog();
             myDialog.show(getActivity().getSupportFragmentManager(), "my");*/
             AddCategoryDialog dialog = new AddCategoryDialog(getContext());
+            db.getCategory();
             dialog.show();
         });
         return binding.getRoot();

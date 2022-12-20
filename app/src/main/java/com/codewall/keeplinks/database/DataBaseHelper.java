@@ -5,11 +5,15 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.codewall.keeplinks.data.CateData;
+import com.codewall.keeplinks.data.CategoryData;
 import com.codewall.keeplinks.data.LinkData;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
@@ -112,17 +116,53 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return list;
     }
 
-    public List<CateData> getCategoryList(){
-        List<CateData> list=new ArrayList<>();
-        db=this.getReadableDatabase();
-        Cursor cursor=db.rawQuery("Select * from "+LINKS_TABLE,null);
-        while (cursor.moveToNext()){
-            String name=cursor.getString(K_CATEGORY);
+    public List<CateData> getCategoryList() {
+        List<CateData> list = new ArrayList<>();
+        db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("Select * from " + LINKS_TABLE, null);
+        while (cursor.moveToNext()) {
+            String name = cursor.getString(K_CATEGORY);
             list.add(new CateData(name));
         }
         cursor.close();
         return list;
 
+    }
+
+    // TODO: Un-finish method
+    public CategoryData getCategory() {
+        CategoryData data = new CategoryData();
+        // arrange the values by programming
+        List<HashMap<String,String>> list = new ArrayList<>();
+        db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + LINKS_TABLE, null);
+        int n = 0;
+        while (cursor.moveToNext()) {
+            String category = cursor.getString(K_CATEGORY),
+                    link = cursor.getString(K_LINK);
+            HashMap<String,String> map = new HashMap<>();
+            map.put("category",category);
+            map.put("link",link);
+            list.add(map);
+        }
+        for (HashMap<String, String> map:
+        list){
+            HashMap<String,Object> map1 = new HashMap<>();
+            List<String> links = new ArrayList<>();
+            if (data.size()>0&&data.get(n).containsValue(map.get("category"))){
+                links = (List<String>) data.get(n).get("links");
+                links.add(map.get("link"));
+                map1.replace("links",links);
+                data.set(n,map1);
+            }else {
+                map1.put("category",map.get("category"));
+                links.add(map.get("link"));
+                map1.put("links",links);
+                data.add(map1);
+            }
+        }
+        cursor.close();
+        return data;
     }
 
     public String getValue(int id, int index) {
