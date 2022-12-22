@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.codewall.keeplinks.data.CateData;
 import com.codewall.keeplinks.data.CategoryData;
+import com.codewall.keeplinks.data.HomeData;
 import com.codewall.keeplinks.data.LinkData;
 import com.google.gson.Gson;
 
@@ -116,8 +117,25 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return list;
     }
 
-    public List<CateData> getCategoryList() {
-        List<CateData> list = new ArrayList<>();
+    public HomeData getHomeData(){
+        HomeData data = new HomeData();
+        db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM "+LINKS_TABLE,null);
+        while (cursor.moveToNext()){
+            HashMap<String,String> map = new HashMap<>();
+            map.put(NAME,cursor.getString(1));
+            map.put(LINK,cursor.getString(2));
+            map.put(CATEGORY,cursor.getString(3));
+            map.put(NOTE,cursor.getString(4));
+            map.put(SAVED_DATE,cursor.getString(5));
+            data.add(map);
+        }
+        cursor.close();
+        return data;
+    }
+
+    public ArrayList<CateData> getCategoryList() {
+        ArrayList<CateData> list = new ArrayList<>();
         db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("Select * from " + LINKS_TABLE, null);
         while (cursor.moveToNext()) {

@@ -28,12 +28,12 @@ public class CategoryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        arrayList = new ArrayList<>();
+        binding = FragmentCategoryBinding.inflate(inflater, container, false);
+
 
         db = new DataBaseHelper(getContext());
-        arrayList = (ArrayList<CateData>) db.getCategoryList();
-        arrayList.add(new CateData("hello"));
-        binding = FragmentCategoryBinding.inflate(inflater, container, false);
+        arrayList = db.getCategoryList();
+
         binding.categoryRecycler.setHasFixedSize(true);
         CategoryAdapter adapter = new CategoryAdapter(arrayList);
         binding.categoryRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2));
@@ -43,7 +43,9 @@ public class CategoryFragment extends Fragment {
             /*MyDialog myDialog = new MyDialog();
             myDialog.show(getActivity().getSupportFragmentManager(), "my");*/
             AddCategoryDialog dialog = new AddCategoryDialog(getContext());
-            db.getCategory();
+            dialog.setOnAddListener(string -> {
+                db.addLink("","",string,"","");
+            });
             dialog.show();
         });
         return binding.getRoot();

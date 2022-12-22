@@ -13,15 +13,21 @@ import com.codewall.keeplinks.databinding.DialogAddCategoryBinding;
 
 public class AddCategoryDialog extends AlertDialog {
     DialogAddCategoryBinding binding;
+    AddClickListener addClickListener;
     public AddCategoryDialog(@NonNull Context context) {
         super(context);
         binding = DialogAddCategoryBinding.inflate(LayoutInflater.from(context));
         this.setView(binding.getRoot());
         this.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         binding.btnAddDialog.setOnClickListener(v -> {
-            Toast.makeText(context, binding.textCategory.getText().toString(), Toast.LENGTH_SHORT).show();
-            this.dismiss();
+            addClickListener.onClick(String.valueOf(binding.textCategory.getText()));
         });
         Dialog dialog = new Dialog(context);
+    }
+    public void setOnAddListener(AddClickListener addClickListener){
+        this.addClickListener = addClickListener;
+    }
+    public interface AddClickListener{
+        void onClick(String string);
     }
 }

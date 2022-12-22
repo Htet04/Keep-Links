@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.codewall.keeplinks.adapter.HomeAdapter;
+import com.codewall.keeplinks.data.HomeData;
 import com.codewall.keeplinks.database.DataBaseHelper;
 import com.codewall.keeplinks.databinding.FragmentHomeBinding;
 import com.codewall.keeplinks.ui.LinkEditorActivity;
@@ -25,6 +26,7 @@ public class HomeFragment extends Fragment {
 
     FragmentHomeBinding binding;
     DataBaseHelper db;
+    HomeData data;
     /**
      * Link add ပြီးတဲ့ အခါ RecyclerView ကို Data Update ဖြစ်အောင် လုပ်ဖို့
      */
@@ -32,7 +34,7 @@ public class HomeFragment extends Fragment {
         @Override
         public void onActivityResult(ActivityResult result) {
             if (result.getResultCode() == 10) {
-                binding.homeRecycler.setAdapter(new HomeAdapter(db));
+                binding.homeRecycler.setAdapter(new HomeAdapter(data));
             }
         }
     });
@@ -45,10 +47,14 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
+        db = new DataBaseHelper(getContext());
+
         binding.homeRecycler.setHasFixedSize(true);
         binding.homeRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        db = new DataBaseHelper(getContext());
-        binding.homeRecycler.setAdapter(new HomeAdapter(db));
+
+        data = db.getHomeData();
+
+        binding.homeRecycler.setAdapter(new HomeAdapter(data));
 
         binding.btnFab.setOnClickListener(v -> {
             launcher.launch(new Intent(getContext(), LinkEditorActivity.class));

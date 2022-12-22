@@ -10,12 +10,13 @@ import com.codewall.keeplinks.databinding.BottomSheetLayoutBinding;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 public class SheetDialog extends BottomSheetDialog {
+    public static final int BUTTON_COPY = 1;
+    public static final int BUTTON_EDIT = 2;
+    public static final int BUTTON_OPEN = 3;
+    public static final int BUTTON_SHARE = 4;
+    public static final int BUTTON_DELETE = 5;
     private BottomSheetLayoutBinding binding;
-    private OnCopyButtonClickListener onCopyButtonClickListener;
-    private OnEditButtonClickListener onEditButtonClickListener;
-    private OnOpenButtonClickListener onOpenButtonClickListener;
-    private OnShareButtonClickListener onShareButtonClickListener;
-    private OnDeleteButtonClickListener onDeleteButtonClickListener;
+    private OnButtonClickListener buttonClickListener;
 
     public SheetDialog(@NonNull Context context) {
         super(context);
@@ -25,24 +26,8 @@ public class SheetDialog extends BottomSheetDialog {
         setting();
     }
 
-    public void setOnCopyButtonClickListener(OnCopyButtonClickListener onCopyButtonClickListener) {
-        this.onCopyButtonClickListener = onCopyButtonClickListener;
-    }
-
-    public void setOnEditButtonClickListener(OnEditButtonClickListener onEditButtonClickListener) {
-        this.onEditButtonClickListener = onEditButtonClickListener;
-    }
-
-    public void setOnOpenButtonClickListener(OnOpenButtonClickListener onOpenButtonClickListener){
-        this.onOpenButtonClickListener = onOpenButtonClickListener;
-    }
-
-    public void setOnShareButtonClickListener(OnShareButtonClickListener onShareButtonClickListener){
-        this.onShareButtonClickListener = onShareButtonClickListener;
-    }
-
-    public void setOnDeleteButtonClickListener(OnDeleteButtonClickListener onDeleteButtonClickListener){
-        this.onDeleteButtonClickListener = onDeleteButtonClickListener;
+    public void setOnButtonClickListener(OnButtonClickListener buttonClickListener) {
+        this.buttonClickListener = buttonClickListener;
     }
 
     @Override
@@ -64,40 +49,32 @@ public class SheetDialog extends BottomSheetDialog {
         binding.delete.icon.setImageResource(R.drawable.ic_baseline_delete_24);
 
         binding.copy.getRoot().setOnClickListener(v -> {
-            onCopyButtonClickListener.onCopyButtonClicked();
+            buttonClickListener.onButtonClick(BUTTON_COPY);
         });
         binding.edit.getRoot().setOnClickListener(v -> {
-            onEditButtonClickListener.onEditButtonClicked();
+            buttonClickListener.onButtonClick(BUTTON_EDIT);
         });
         binding.open.getRoot().setOnClickListener(v -> {
-            onOpenButtonClickListener.onOpenButtonButtonClicked();
+            buttonClickListener.onButtonClick(BUTTON_OPEN);
         });
         binding.share.getRoot().setOnClickListener(v -> {
-            onShareButtonClickListener.onShareButtonClicked();
+            buttonClickListener.onButtonClick(BUTTON_SHARE);
         });
         binding.delete.getRoot().setOnClickListener(v -> {
-            onDeleteButtonClickListener.onDeleteButtonClickListener();
+            buttonClickListener.onButtonClick(BUTTON_DELETE);
         });
     }
 
-
-    public interface OnCopyButtonClickListener {
-        void onCopyButtonClicked();
+    public interface OnButtonClickListener {
+        /**
+         * Button Types are
+         * {@link #BUTTON_COPY}
+         * {@link #BUTTON_EDIT}
+         * {@link #BUTTON_OPEN}
+         * {@link #BUTTON_SHARE}
+         * {@link #BUTTON_DELETE}
+         * */
+        void onButtonClick(final int btn_type);
     }
 
-    public interface OnEditButtonClickListener {
-        void onEditButtonClicked();
-    }
-
-    public interface OnOpenButtonClickListener {
-        void onOpenButtonButtonClicked();
-    }
-
-    public interface OnShareButtonClickListener {
-        void onShareButtonClicked();
-    }
-
-    public interface OnDeleteButtonClickListener {
-        void onDeleteButtonClickListener();
-    }
 }
