@@ -57,6 +57,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+
     public long addLink(String name, String link, String category, String note, String saved_date) {
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();

@@ -9,12 +9,14 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 
+import com.codewall.keeplinks.R;
 import com.codewall.keeplinks.adapter.CategoryAdapter;
 import com.codewall.keeplinks.data.CateData;
 import com.codewall.keeplinks.database.DataBaseHelper;
 import com.codewall.keeplinks.databinding.FragmentCategoryBinding;
 import com.codewall.keeplinks.ui.dialog.AddCategoryDialog;
 import com.codewall.keeplinks.ui.dialog.MyDialog;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -39,12 +41,16 @@ public class CategoryFragment extends Fragment {
         binding.categoryRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2));
         binding.categoryRecycler.setAdapter(adapter);
 
-        binding.btnFab.setOnClickListener(v -> {
+        FloatingActionButton mainFab = requireActivity().findViewById(R.id.main_fab);
+
+        mainFab.setOnClickListener(v -> {
             /*MyDialog myDialog = new MyDialog();
             myDialog.show(getActivity().getSupportFragmentManager(), "my");*/
             AddCategoryDialog dialog = new AddCategoryDialog(getContext());
             dialog.setOnAddListener(string -> {
+                // TODO : fix here
                 db.addLink("","",string,"","");
+
             });
             dialog.show();
         });

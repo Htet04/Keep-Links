@@ -19,7 +19,7 @@
             android:name=".ui.LinkEditorActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".ui.MainActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
             tools:ignore="LockedOrientationActivity">
             <!--
@@ -55,7 +55,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="false"
             android:configChanges="keyboardHidden|smallestScreenSize|screenSize|screenLayout"
             android:windowSoftInputMode="adjustPan"

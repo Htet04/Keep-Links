@@ -1,4 +1,4 @@
-package com.codewall.keeplinks;
+package com.codewall.keeplinks.ui;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.codewall.keeplinks.R;
 import com.codewall.keeplinks.databinding.ActivityMainBinding;
 import com.codewall.keeplinks.ui.dialog.MyDialog;
 import com.codewall.keeplinks.ui.fragment.BrowserFragment;

@@ -6,9 +6,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 
-import com.codewall.keeplinks.MainActivity;
 import com.codewall.keeplinks.databinding.ActivitySplashScreenBinding;
 
 @SuppressLint("CustomSplashScreen")

@@ -16,11 +16,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.codewall.keeplinks.R;
 import com.codewall.keeplinks.adapter.HomeAdapter;
 import com.codewall.keeplinks.data.HomeData;
 import com.codewall.keeplinks.database.DataBaseHelper;
 import com.codewall.keeplinks.databinding.FragmentHomeBinding;
 import com.codewall.keeplinks.ui.LinkEditorActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class HomeFragment extends Fragment {
 
@@ -56,7 +58,9 @@ public class HomeFragment extends Fragment {
 
         binding.homeRecycler.setAdapter(new HomeAdapter(data));
 
-        binding.btnFab.setOnClickListener(v -> {
+        FloatingActionButton mainFab = requireActivity().findViewById(R.id.main_fab);
+
+        mainFab.setOnClickListener(v -> {
             launcher.launch(new Intent(getContext(), LinkEditorActivity.class));
         });
         return binding.getRoot();
