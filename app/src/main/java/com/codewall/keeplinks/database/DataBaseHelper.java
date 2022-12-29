@@ -7,10 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.codewall.keeplinks.data.CateData;
 import com.codewall.keeplinks.data.CategoryData;
 import com.codewall.keeplinks.data.HomeData;
-import com.codewall.keeplinks.data.LinkData;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -18,6 +16,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
+
+    public static final String TAG = "DataBaseHelper";
 
     public static final String DATABASE_NAME = "database.db";
     public static final int DATABASE_VERSION = 1;
@@ -33,6 +33,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final int K_CATEGORY = 3;
     public static final int K_NOTE = 4;
     public static final int K_SAVED_DATE = 5;
+
+    private Context context;
     private SQLiteDatabase db;
 
     public DataBaseHelper(Context context) {
@@ -96,28 +98,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    /**
-     * @deprecated အလုပ်ရှုပ်လို့ deprecated ထားထားတယ်
-     */
-    @Deprecated
-    public List<LinkData> getData() {
-        List<LinkData> list = new ArrayList<>();
-        db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + LINKS_TABLE, null);
-        if (cursor != null) {
-            while (cursor.moveToNext()) {
-                String name = cursor.getString(K_NAME),
-                        link = cursor.getString(K_LINK),
-                        category = cursor.getString(K_CATEGORY),
-                        note = cursor.getString(K_NOTE),
-                        date = cursor.getString(K_SAVED_DATE);
-                list.add(new LinkData(name, link, category, note, date));
-            }
-            cursor.close();
-        }
-        return list;
-    }
-
     public HomeData getHomeData(){
         HomeData data = new HomeData();
         db = this.getReadableDatabase();
@@ -133,19 +113,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
         cursor.close();
         return data;
-    }
-
-    public ArrayList<CateData> getCategoryList() {
-        ArrayList<CateData> list = new ArrayList<>();
-        db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("Select * from " + LINKS_TABLE, null);
-        while (cursor.moveToNext()) {
-            String name = cursor.getString(K_CATEGORY);
-            list.add(new CateData(name));
-        }
-        cursor.close();
-        return list;
-
     }
 
     // TODO: Un-finish method
@@ -181,6 +148,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             }
         }
         cursor.close();
+        Log.i(TAG, "getCategory: \n"+new Gson().toJson(data));
         return data;
     }
 
@@ -195,42 +163,4 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
         return result;
     }
-
-/*
-
-        Complex code
-
-
-    public String getLink(long id) {
-        db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM "+LINKS_TABLE,null);
-        cursor.moveToFirst();
-        String result = cursor.getString(1);
-        cursor.close();
-        return result;
-    }
-    public String getCategory(long id) {
-        db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM "+LINKS_TABLE,null);
-        cursor.moveToFirst();
-        String result = cursor.getString(2);
-        cursor.close();
-        return result;
-    }
-    public String getNote(long id) {
-        db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM "+LINKS_TABLE,null);
-        cursor.moveToFirst();
-        String result = cursor.getString(3);
-        cursor.close();
-        return result;
-    }
-    public String getSavedDate(long id) {
-        db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM "+LINKS_TABLE,null);
-        cursor.moveToFirst();
-        String result = cursor.getString(4);
-        cursor.close();
-        return result;
-    }*/
 }

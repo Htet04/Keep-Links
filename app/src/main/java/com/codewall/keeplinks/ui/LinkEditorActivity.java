@@ -28,6 +28,7 @@ public class LinkEditorActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         String sharedText = getIntent().getStringExtra(Intent.EXTRA_TEXT);
+        String editText = getIntent().getStringExtra("edit");
         if (sharedText != null) {
             binding.link.setText(sharedText);
         }

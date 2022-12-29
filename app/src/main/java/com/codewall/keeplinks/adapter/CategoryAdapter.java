@@ -9,18 +9,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.codewall.keeplinks.R;
-import com.codewall.keeplinks.data.CateData;
+import com.codewall.keeplinks.data.CategoryData;
+import com.codewall.keeplinks.database.DataBaseHelper;
 import com.codewall.keeplinks.databinding.CatagoryItemLayoutBinding;
 
 import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyViewHolder> {
     CatagoryItemLayoutBinding binding;
-    List<CateData> list;
+    CategoryData data;
     private String title;
 
-    public CategoryAdapter(List list) {
-        this.list = list;
+    public CategoryAdapter(CategoryData data) {
+        this.data = data;
     }
 
     @NonNull
@@ -32,14 +33,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        CateData obj = list.get(position);
-        holder.textView.setText(obj.getTitle());
-
+        binding.categoryName.setText((CharSequence) data.get(position).get(DataBaseHelper.CATEGORY));
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return data.size();
     }
 
 

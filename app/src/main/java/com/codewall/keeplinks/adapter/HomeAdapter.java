@@ -2,18 +2,17 @@ package com.codewall.keeplinks.adapter;
 
 import static com.codewall.keeplinks.database.DataBaseHelper.CATEGORY;
 import static com.codewall.keeplinks.database.DataBaseHelper.LINK;
-import static com.codewall.keeplinks.database.DataBaseHelper.NAME;
 import static com.codewall.keeplinks.database.DataBaseHelper.SAVED_DATE;
 import static com.codewall.keeplinks.ui.dialog.SheetDialog.BUTTON_COPY;
 import static com.codewall.keeplinks.ui.dialog.SheetDialog.BUTTON_DELETE;
 import static com.codewall.keeplinks.ui.dialog.SheetDialog.BUTTON_EDIT;
 import static com.codewall.keeplinks.ui.dialog.SheetDialog.BUTTON_OPEN;
 import static com.codewall.keeplinks.ui.dialog.SheetDialog.BUTTON_SHARE;
+import static com.codewall.keeplinks.util.Utils.copyToClipboard;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,6 +27,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
     HomeItemLayoutBinding binding;
     DataBaseHelper db;
     HomeData data;
+
+    OnItemLongClickListener onItemLongClickListener;
 
     public HomeAdapter(HomeData data) {
         this.data = data;
@@ -50,35 +51,40 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
         holder.itemView.setOnLongClickListener(v ->{
             SheetDialog dialog = new SheetDialog(holder.itemView.getContext());
             dialog.setOnButtonClickListener(btn_type -> {
+                onItemLongClickListener.onLongClick(btn_type);
                 switch (btn_type){
                     case BUTTON_COPY:{
-                        Toast.makeText(holder.itemView.getContext(), "Copy button click", Toast.LENGTH_SHORT).show();
+                        copyToClipboard(holder.itemView.getContext(),data.get(position).get(LINK));
                         break;
                     }
                     case BUTTON_EDIT:{
-                        Toast.makeText(holder.itemView.getContext(), "Edit button click", Toast.LENGTH_SHORT).show();
+
                         break;
                     }
                     case BUTTON_OPEN:{
-                        Toast.makeText(holder.itemView.getContext(), "Open button click", Toast.LENGTH_SHORT).show();
                         break;
                     }
                     case BUTTON_SHARE:{
-                        Toast.makeText(holder.itemView.getContext(), "Share button click", Toast.LENGTH_SHORT).show();
                         break;
                     }
                     case BUTTON_DELETE:{
-                        Toast.makeText(holder.itemView.getContext(), "Delete button click", Toast.LENGTH_SHORT).show();
+                        data.remove(position);
                         break;
                     }
                     default:{
 
                     }
                 }
+                notifyDataSetChanged();
+                dialog.dismiss();
             });
             dialog.show();
             return true;
         });
+    }
+
+    public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener){
+        this.onItemLongClickListener = onItemLongClickListener;
     }
 
     @Override
@@ -91,5 +97,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
         public HomeViewHolder(@NonNull View itemView) {
             super(itemView);
         }
+    }
+
+    public interface OnItemLongClickListener{
+        void onLongClick(int btn_type);
     }
 }

@@ -1,28 +1,27 @@
 package com.codewall.keeplinks.ui.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.codewall.keeplinks.R;
 import com.codewall.keeplinks.adapter.CategoryAdapter;
-import com.codewall.keeplinks.data.CateData;
+import com.codewall.keeplinks.data.CategoryData;
 import com.codewall.keeplinks.database.DataBaseHelper;
 import com.codewall.keeplinks.databinding.FragmentCategoryBinding;
 import com.codewall.keeplinks.ui.dialog.AddCategoryDialog;
-import com.codewall.keeplinks.ui.dialog.MyDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
 public class CategoryFragment extends Fragment {
-    ArrayList<CateData> arrayList;
+
+    CategoryData data;
     FragmentCategoryBinding binding;
     DataBaseHelper db;
 
@@ -34,12 +33,12 @@ public class CategoryFragment extends Fragment {
 
 
         db = new DataBaseHelper(getContext());
-        arrayList = db.getCategoryList();
+        data = CategoryData.getInstance(requireContext());
 
         binding.categoryRecycler.setHasFixedSize(true);
-        CategoryAdapter adapter = new CategoryAdapter(arrayList);
+
         binding.categoryRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        binding.categoryRecycler.setAdapter(adapter);
+        binding.categoryRecycler.setAdapter(new CategoryAdapter(data));
 
         FloatingActionButton mainFab = requireActivity().findViewById(R.id.main_fab);
 
@@ -49,7 +48,7 @@ public class CategoryFragment extends Fragment {
             AddCategoryDialog dialog = new AddCategoryDialog(getContext());
             dialog.setOnAddListener(string -> {
                 // TODO : fix here
-                db.addLink("","",string,"","");
+
 
             });
             dialog.show();
