@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -16,8 +15,6 @@ import com.codewall.keeplinks.database.DataBaseHelper;
 import com.codewall.keeplinks.databinding.FragmentCategoryBinding;
 import com.codewall.keeplinks.ui.dialog.AddCategoryDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.ArrayList;
 
 public class CategoryFragment extends Fragment {
 
@@ -33,7 +30,7 @@ public class CategoryFragment extends Fragment {
 
 
         db = new DataBaseHelper(getContext());
-        data = CategoryData.getInstance(requireContext());
+        data = new CategoryData(requireContext());
 
         binding.categoryRecycler.setHasFixedSize(true);
 

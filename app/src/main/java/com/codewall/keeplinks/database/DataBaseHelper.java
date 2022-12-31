@@ -98,8 +98,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    public HomeData getHomeData(){
-        HomeData data = new HomeData();
+    public ArrayList<HashMap<String,String>> getHomeData(){
+        ArrayList<HashMap<String,String>> data = new ArrayList<>();
         db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM "+LINKS_TABLE,null);
         while (cursor.moveToNext()){
@@ -116,8 +116,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     // TODO: Un-finish method
-    public CategoryData getCategory() {
-        CategoryData data = new CategoryData();
+    public ArrayList<HashMap<String, Object>> getCategory() {
+        ArrayList<HashMap<String, Object>> data = new ArrayList<>();
         // arrange the values by programming
         List<HashMap<String,String>> list = new ArrayList<>();
         db = this.getReadableDatabase();

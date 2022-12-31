@@ -38,7 +38,7 @@ public class HomeFragment extends Fragment {
         @Override
         public void onActivityResult(ActivityResult result) {
             if (result.getResultCode() == 10) {
-                data = HomeData.getInstance(requireContext());
+                data = new HomeData(requireContext());
                 binding.homeRecycler.setAdapter(new HomeAdapter(data));
             }
         }
@@ -57,7 +57,7 @@ public class HomeFragment extends Fragment {
         binding.homeRecycler.setHasFixedSize(true);
         binding.homeRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
-        data = HomeData.getInstance(requireContext());
+        data = new HomeData(requireContext());
 
         binding.homeRecycler.setAdapter(new HomeAdapter(data));
         // TODO : add data manage method with listener Ok

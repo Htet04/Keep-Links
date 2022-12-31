@@ -44,9 +44,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
     @Override
     public void onBindViewHolder(@NonNull HomeViewHolder holder, int position) {
 
-        binding.linkName.setText(data.get(position).get(CATEGORY));
-        binding.linktext.setText(data.get(position).get(LINK));
-        binding.savedDate.setText(data.get(position).get(SAVED_DATE));
+        binding.linkName.setText(data.getCategory(position));
+        binding.linktext.setText(data.getLink(position));
+        binding.savedDate.setText(data.getSavedDate(position));
 
         holder.itemView.setOnLongClickListener(v ->{
             SheetDialog dialog = new SheetDialog(holder.itemView.getContext());
@@ -54,7 +54,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
                 onItemLongClickListener.onLongClick(btn_type);
                 switch (btn_type){
                     case BUTTON_COPY:{
-                        copyToClipboard(holder.itemView.getContext(),data.get(position).get(LINK));
+                        copyToClipboard(holder.itemView.getContext(),data.getLink(position));
                         break;
                     }
                     case BUTTON_EDIT:{
