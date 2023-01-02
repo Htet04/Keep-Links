@@ -7,12 +7,13 @@ import com.codewall.keeplinks.database.DataBaseHelper;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class CategoryData extends DataBaseHelper {
     // TODO : inject database add,delete,update method here to make it fresh.
     private ArrayList<Category> data;
-    private Context context;
+    private final Context context;
 
     public CategoryData(Context context) {
         super(context);
@@ -30,5 +31,13 @@ public class CategoryData extends DataBaseHelper {
 
     public void add() {
 
+    }
+
+    public String getCategory(int position){
+        return data.get(position).getCategory();
+    }
+
+    public List<String> getLinks(int position){
+        return data.get(position).getLinks();
     }
 }

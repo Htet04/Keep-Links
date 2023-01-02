@@ -46,7 +46,6 @@ public class CategoryFragment extends Fragment {
             dialog.setOnAddListener(string -> {
                 // TODO : fix here
 
-
             });
             dialog.show();
         });

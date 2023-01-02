@@ -133,7 +133,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             List<String> links = new ArrayList<>();
             // Category Data class
             Category category;
-            if (data.size() > 0 && data.get(n).getCategory().contains(map.getCategory())) {
+            if (data.size() > 0 && data.get(n).getCategory().equalsIgnoreCase(map.getCategory())) {
                 // null Object Reference မဖြစ်ဖု့ obj size အနည်းဆုံးတစ်ခုရှိမှ && အနောက်က condition ဆက် စစ်မယ်
                 // data size က 0 ထက်ကြီးရင် return ပြန်မယ့် data ထဲ ဒီ Category ရှိရင်
                 // အဲ့ဒီ links List ကိုယူမယ်
@@ -146,6 +146,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 category.setLinks(links);
                 // data ထဲ n ကြိမ်မြောက်မှာ link အသစ်ပါတဲ့ Category data ကို update လိုက်မယ်
                 data.set(n, category);
+                n++;
             } else {
                 // data size 0 (Zero) ဖြစ်ရင် အသစ်ထပ်ထည့်ဖို့
                 // data တစ်ခုထည့်ပြီတာနဲ့ data size တိုးသွားပြီမို့ ဆက်မလုပ်တော့ဘူး

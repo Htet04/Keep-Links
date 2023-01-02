@@ -4,7 +4,7 @@ public class Home {
     private String name,link,category,savedDate,note;
 
     public Home(){
-
+        //empty constructor
     }
 
     public Home(String name, String link, String category, String savedDate, String note) {

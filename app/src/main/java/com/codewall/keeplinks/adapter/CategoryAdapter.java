@@ -12,6 +12,7 @@ import com.codewall.keeplinks.R;
 import com.codewall.keeplinks.data.CategoryData;
 import com.codewall.keeplinks.database.DataBaseHelper;
 import com.codewall.keeplinks.databinding.CatagoryItemLayoutBinding;
+import com.codewall.keeplinks.listener.OnItemLongClickListener;
 
 import java.util.List;
 
@@ -19,6 +20,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
     CatagoryItemLayoutBinding binding;
     CategoryData data;
     private String title;
+
+    private OnItemLongClickListener onItemLongClickListener;
 
     public CategoryAdapter(CategoryData data) {
         this.data = data;
@@ -33,7 +36,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        binding.categoryName.setText((CharSequence) data.get(position).get(DataBaseHelper.CATEGORY));
+        binding.categoryName.setText((CharSequence) data.getCategory(position));
+
+        holder.itemView.setOnLongClickListener(v -> {
+            onItemLongClickListener.onLongClick(1);
+            return true;
+        });
     }
 
     @Override

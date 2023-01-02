@@ -10,7 +10,7 @@ import java.util.ArrayList;
 //TODO : need to edit data many method have been tried but have a lot of problem done!
 public class HomeData extends DataBaseHelper {
     private ArrayList<Home> data;
-    private Context context;
+    private final Context context;
 
     public HomeData(Context context) {
         super(context);
