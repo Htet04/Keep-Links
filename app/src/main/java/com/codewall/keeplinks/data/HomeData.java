@@ -1,18 +1,15 @@
 package com.codewall.keeplinks.data;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 
 import com.codewall.keeplinks.data.model.Home;
 import com.codewall.keeplinks.database.DataBaseHelper;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 //TODO : need to edit data many method have been tried but have a lot of problem done!
 public class HomeData extends DataBaseHelper {
     private ArrayList<Home> data;
-    private HashMap<String,String> map;
     private Context context;
 
     public HomeData(Context context) {
@@ -25,20 +22,24 @@ public class HomeData extends DataBaseHelper {
         data = new DataBaseHelper(context).getHomeData();
     }
 
-    public void add(String name,String link,String category,String savedDae,String note){
-        super.addLink(name, link, category, savedDae, note);
+    public void add(String name, String link, String category, String savedDate, String note) {
+        super.addLink(name, link, category, savedDate, note);
+        data.add(new Home(name, link, category, savedDate, note));
     }
 
-    public void set(int id,String name,String link,String category,String savedDae,String note){
-        super.updateLink(id+1,name,link,category,savedDae,note);
+    public void set(int id, String name, String link, String category, String savedDate, String note) {
+        super.updateLink(id + 1, name, link, category, savedDate, note);
+        data.set(id, new Home(name, link, category, savedDate, note));
     }
+
+    public void rm(int id) {
+        super.deleteLink(id + 1);
+        data.remove(id);
+    }
+
 
     public int size() {
         return data.size();
-    }
-
-    public void remove(int position) {
-        data.remove(position);
     }
 
     public String getName(int position) {

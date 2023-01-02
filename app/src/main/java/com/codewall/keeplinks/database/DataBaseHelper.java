@@ -7,8 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.codewall.keeplinks.data.CategoryData;
-import com.codewall.keeplinks.data.HomeData;
+import com.codewall.keeplinks.data.model.Category;
 import com.codewall.keeplinks.data.model.Home;
 import com.google.gson.Gson;
 
@@ -99,17 +98,16 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    public ArrayList<Home> getHomeData(){
+    public ArrayList<Home> getHomeData() {
         ArrayList<Home> data = new ArrayList<>();
         db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM "+LINKS_TABLE,null);
-        while (cursor.moveToNext()){
-            Home map = new Home();
-            map.setName(cursor.getString(1));
-            map.setLink(cursor.getString(2));
-            map.setCategory(cursor.getString(3));
-            map.setSavedDate(cursor.getString(4));
-            map.setNote(cursor.getString(5));
+        Cursor cursor = db.rawQuery("SELECT * FROM " + LINKS_TABLE, null);
+        while (cursor.moveToNext()) {
+            Home map = new Home(cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getString(4),
+                    cursor.getString(5));
             data.add(map);
         }
         cursor.close();
@@ -117,39 +115,57 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     // TODO: Un-finish method
-    public ArrayList<HashMap<String, Object>> getCategory() {
-        ArrayList<HashMap<String, Object>> data = new ArrayList<>();
-        // arrange the values by programming
-        List<HashMap<String,String>> list = new ArrayList<>();
+    public ArrayList<Category> getCategory() {
         db = this.getReadableDatabase();
+
+        // return ပြန်မယ့်ဒေတာ
+        ArrayList<Category> data = new ArrayList<>();
+
+        // Table ထဲမှာရှိတဲ့ content တွေ အကုန်ယူမယ် ပြီးရင် category အလိုက်စစ်ထည့်ပြီး အပေါ်က data ထဲပြန်ထည့်မယ်
+        List<Home> unFilterData = getHomeData();
+
         Cursor cursor = db.rawQuery("SELECT * FROM " + LINKS_TABLE, null);
+        // Content တစ်ခုချင်းရဲ့ position ကိုယူသုံးဖို့
         int n = 0;
-        while (cursor.moveToNext()) {
-            String category = cursor.getString(K_CATEGORY),
-                    link = cursor.getString(K_LINK);
-            HashMap<String,String> map = new HashMap<>();
-            map.put("category",category);
-            map.put("link",link);
-            list.add(map);
-        }
-        for (HashMap<String, String> map:
-        list){
-            HashMap<String,Object> map1 = new HashMap<>();
+
+        for (Home map : unFilterData) {
+            // Category အလိုက် link တွေကို စုထားဖို့
             List<String> links = new ArrayList<>();
-            if (data.size()>0&&data.get(n).containsValue(map.get("category"))){
-                links = (List<String>) data.get(n).get("links");
-                links.add(map.get("link"));
-                map1.replace("links",links);
-                data.set(n,map1);
-            }else {
-                map1.put("category",map.get("category"));
-                links.add(map.get("link"));
-                map1.put("links",links);
-                data.add(map1);
+            // Category Data class
+            Category category;
+            if (data.size() > 0 && data.get(n).getCategory().contains(map.getCategory())) {
+                // null Object Reference မဖြစ်ဖု့ obj size အနည်းဆုံးတစ်ခုရှိမှ && အနောက်က condition ဆက် စစ်မယ်
+                // data size က 0 ထက်ကြီးရင် return ပြန်မယ့် data ထဲ ဒီ Category ရှိရင်
+                // အဲ့ဒီ links List ကိုယူမယ်
+                links = data.get(n).getLinks();
+                // link အသစ် ထပ်ထည့်မယ်
+                links.add(map.getLink());
+                // n ကြိမ်မြောက်မှာရှိတဲ့ Category data ကို ယူမယ်
+                category = data.get(n);
+                // link အသစ်ထည့်ထားတဲ့ links List ကို ထည့်ပေးလိုက်မယ်
+                category.setLinks(links);
+                // data ထဲ n ကြိမ်မြောက်မှာ link အသစ်ပါတဲ့ Category data ကို update လိုက်မယ်
+                data.set(n, category);
+            } else {
+                // data size 0 (Zero) ဖြစ်ရင် အသစ်ထပ်ထည့်ဖို့
+                // data တစ်ခုထည့်ပြီတာနဲ့ data size တိုးသွားပြီမို့ ဆက်မလုပ်တော့ဘူး
+                // Category အသစ်အတွက် တစ်ခါ ပဲ အလုပ်လုပ်တယ် ရှိပြီးသား Category အတွက်ဆို
+                // အပေါ်က condition က အလုပ်လုပ်မယ်
+
+                category = new Category();
+                // Category name ထည့်မယ်
+                category.setCategory(map.getCategory());
+                //links ထဲကို link ထည့်မယ်
+                links.add(map.getLink());
+                //links List ကို Category data ထဲထည့်မယ်
+                category.setLinks(links);
+                //Category name နဲ့ သူ့ရဲ့ links ကို data ထဲထည့်မယ်
+                data.add(category);
             }
+
         }
         cursor.close();
-        Log.i(TAG, "getCategory: \n"+new Gson().toJson(data));
+        Log.i(TAG, "getCategory: \n" + new Gson().toJson(data));
         return data;
     }
 

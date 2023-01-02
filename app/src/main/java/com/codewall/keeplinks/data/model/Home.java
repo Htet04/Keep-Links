@@ -3,6 +3,18 @@ package com.codewall.keeplinks.data.model;
 public class Home {
     private String name,link,category,savedDate,note;
 
+    public Home(){
+
+    }
+
+    public Home(String name, String link, String category, String savedDate, String note) {
+        this.name = name;
+        this.link = link;
+        this.category = category;
+        this.savedDate = savedDate;
+        this.note = note;
+    }
+
     public String getName() {
         return name;
     }
