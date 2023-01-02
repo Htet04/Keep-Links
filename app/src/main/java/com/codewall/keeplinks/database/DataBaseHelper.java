@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.codewall.keeplinks.data.CategoryData;
 import com.codewall.keeplinks.data.HomeData;
+import com.codewall.keeplinks.data.model.Home;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -98,17 +99,17 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    public ArrayList<HashMap<String,String>> getHomeData(){
-        ArrayList<HashMap<String,String>> data = new ArrayList<>();
+    public ArrayList<Home> getHomeData(){
+        ArrayList<Home> data = new ArrayList<>();
         db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM "+LINKS_TABLE,null);
         while (cursor.moveToNext()){
-            HashMap<String,String> map = new HashMap<>();
-            map.put(NAME,cursor.getString(1));
-            map.put(LINK,cursor.getString(2));
-            map.put(CATEGORY,cursor.getString(3));
-            map.put(NOTE,cursor.getString(4));
-            map.put(SAVED_DATE,cursor.getString(5));
+            Home map = new Home();
+            map.setName(cursor.getString(1));
+            map.setLink(cursor.getString(2));
+            map.setCategory(cursor.getString(3));
+            map.setSavedDate(cursor.getString(4));
+            map.setNote(cursor.getString(5));
             data.add(map);
         }
         cursor.close();

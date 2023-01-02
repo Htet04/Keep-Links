@@ -1,19 +1,36 @@
 package com.codewall.keeplinks.data;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 
+import com.codewall.keeplinks.data.model.Home;
 import com.codewall.keeplinks.database.DataBaseHelper;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class HomeData {
-    private ArrayList<HashMap<String,String>> data;
+//TODO : need to edit data many method have been tried but have a lot of problem done!
+public class HomeData extends DataBaseHelper {
+    private ArrayList<Home> data;
+    private HashMap<String,String> map;
     private Context context;
 
     public HomeData(Context context) {
+        super(context);
         this.context = context;
+        init();
+    }
+
+    private void init() {
         data = new DataBaseHelper(context).getHomeData();
+    }
+
+    public void add(String name,String link,String category,String savedDae,String note){
+        super.addLink(name, link, category, savedDae, note);
+    }
+
+    public void set(int id,String name,String link,String category,String savedDae,String note){
+        super.updateLink(id+1,name,link,category,savedDae,note);
     }
 
     public int size() {
@@ -25,23 +42,23 @@ public class HomeData {
     }
 
     public String getName(int position) {
-        return (String) data.get(position).get(DataBaseHelper.NAME);
+        return data.get(position).getName();
     }
 
     public String getLink(int position) {
-        return (String) data.get(position).get(DataBaseHelper.LINK);
+        return data.get(position).getLink();
     }
 
     public String getCategory(int position) {
-        return (String) data.get(position).get(DataBaseHelper.CATEGORY);
+        return data.get(position).getCategory();
     }
 
     public String getNote(int position) {
-        return (String) data.get(position).get(DataBaseHelper.NOTE);
+        return data.get(position).getNote();
     }
 
     public String getSavedDate(int position) {
-        return (String) data.get(position).get(DataBaseHelper.SAVED_DATE);
+        return data.get(position).getSavedDate();
     }
     // TODO : inject database add,delete,update method here to make it fresh.
 

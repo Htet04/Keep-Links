@@ -8,15 +8,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CategoryData {
+public class CategoryData extends DataBaseHelper {
     // TODO : inject database add,delete,update method here to make it fresh.
     private ArrayList<HashMap<String, Object>> data;
     private DataBaseHelper db;
     private Context context;
 
     public CategoryData(Context context) {
+        super(context);
         this.context = context;
-        data = new DataBaseHelper(context).getCategory();
+        init();
     }
 
     private void init() {
@@ -25,6 +26,10 @@ public class CategoryData {
 
     public int size() {
         return data.size();
+    }
+
+    public void add() {
+
     }
 
     public Map<String, Object> get(int position) {
