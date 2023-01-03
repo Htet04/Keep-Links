@@ -1,5 +1,12 @@
 package com.codewall.keeplinks.ui.fragment;
 
+import static com.codewall.keeplinks.ui.dialog.SheetDialog.BUTTON_COPY;
+import static com.codewall.keeplinks.ui.dialog.SheetDialog.BUTTON_DELETE;
+import static com.codewall.keeplinks.ui.dialog.SheetDialog.BUTTON_EDIT;
+import static com.codewall.keeplinks.ui.dialog.SheetDialog.BUTTON_OPEN;
+import static com.codewall.keeplinks.ui.dialog.SheetDialog.BUTTON_SHARE;
+import static com.codewall.keeplinks.util.Utils.copyToClipboard;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,6 +38,7 @@ public class HomeFragment extends Fragment {
     FragmentHomeBinding binding;
     DataBaseHelper db;
     HomeData data;
+    HomeAdapter adapter;
     /**
      * Link add ပြီးတဲ့ အခါ RecyclerView ကို Data Update ဖြစ်အောင် လုပ်ဖို့
      */
@@ -53,13 +61,39 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         db = new DataBaseHelper(getContext());
+        data = new HomeData(requireContext());
+        adapter = new HomeAdapter(data);
 
         binding.homeRecycler.setHasFixedSize(true);
         binding.homeRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        binding.homeRecycler.setAdapter(adapter);
 
-        data = new HomeData(requireContext());
+        adapter.setOnItemLongClickListener((btn_type,position) -> {
+            switch (btn_type){
+                case BUTTON_COPY:{
 
-        binding.homeRecycler.setAdapter(new HomeAdapter(data));
+                    break;
+                }
+                case BUTTON_EDIT:{
+
+                    break;
+                }
+                case BUTTON_OPEN:{
+                    break;
+                }
+                case BUTTON_SHARE:{
+                    break;
+                }
+                case BUTTON_DELETE:{
+
+                    break;
+                }
+                default:{
+
+                }
+            }
+
+        });
         // TODO : add data manage method with listener Ok
 
         FloatingActionButton mainFab = requireActivity().findViewById(R.id.main_fab);

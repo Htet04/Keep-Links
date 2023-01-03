@@ -52,30 +52,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
         holder.itemView.setOnLongClickListener(v ->{
             SheetDialog dialog = new SheetDialog(holder.itemView.getContext());
             dialog.setOnButtonClickListener(btn_type -> {
-                onItemLongClickListener.onLongClick(btn_type);
-                switch (btn_type){
-                    case BUTTON_COPY:{
-                        copyToClipboard(holder.itemView.getContext(),data.getLink(position));
-                        break;
-                    }
-                    case BUTTON_EDIT:{
-
-                        break;
-                    }
-                    case BUTTON_OPEN:{
-                        break;
-                    }
-                    case BUTTON_SHARE:{
-                        break;
-                    }
-                    case BUTTON_DELETE:{
-                        data.rm(position);
-                        break;
-                    }
-                    default:{
-
-                    }
-                }
+                onItemLongClickListener.onLongClick(btn_type,position);
                 notifyDataSetChanged();
                 dialog.dismiss();
             });

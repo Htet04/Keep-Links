@@ -1,5 +1,5 @@
 package com.codewall.keeplinks.listener;
 
 public interface OnItemLongClickListener {
-    void onLongClick(int btn_type);
+    void onLongClick(int btn_type,int position);
 }

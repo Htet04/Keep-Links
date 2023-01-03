@@ -2,6 +2,7 @@ package com.codewall.keeplinks.ui.dialog;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 
@@ -18,6 +19,8 @@ public class SheetDialog extends BottomSheetDialog {
     private BottomSheetLayoutBinding binding;
     private OnButtonClickListener buttonClickListener;
 
+    private boolean isCate;
+
     public SheetDialog(@NonNull Context context) {
         super(context);
         binding = BottomSheetLayoutBinding.inflate(LayoutInflater.from(context));
@@ -30,6 +33,11 @@ public class SheetDialog extends BottomSheetDialog {
         this.buttonClickListener = buttonClickListener;
     }
 
+    public void setCate() {
+        isCate = true;
+        setting();
+    }
+
     @Override
     public void show() {
         this.create();
@@ -37,6 +45,11 @@ public class SheetDialog extends BottomSheetDialog {
     }
 
     private void setting() {
+        if (isCate){
+            binding.copy.getRoot().setVisibility(View.GONE);
+            binding.open.getRoot().setVisibility(View.GONE);
+            binding.share.getRoot().setVisibility(View.GONE);
+        }
         binding.copy.text.setText("Copy");
         binding.copy.icon.setImageResource(R.drawable.ic_baseline_content_copy_24);
         binding.edit.text.setText("Edit");

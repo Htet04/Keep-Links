@@ -13,6 +13,7 @@ import com.codewall.keeplinks.data.CategoryData;
 import com.codewall.keeplinks.database.DataBaseHelper;
 import com.codewall.keeplinks.databinding.CatagoryItemLayoutBinding;
 import com.codewall.keeplinks.listener.OnItemLongClickListener;
+import com.codewall.keeplinks.ui.dialog.SheetDialog;
 
 import java.util.List;
 
@@ -39,9 +40,20 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
         binding.categoryName.setText((CharSequence) data.getCategory(position));
 
         holder.itemView.setOnLongClickListener(v -> {
-            onItemLongClickListener.onLongClick(1);
+            SheetDialog dialog = new SheetDialog(holder.itemView.getContext());
+            dialog.setCate();
+            dialog.setOnButtonClickListener(btn_type -> {
+                onItemLongClickListener.onLongClick(btn_type,position);
+                notifyDataSetChanged();
+                dialog.dismiss();
+            });
+            dialog.show();
             return true;
         });
+    }
+
+    public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {
+        this.onItemLongClickListener = onItemLongClickListener;
     }
 
     @Override
