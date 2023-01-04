@@ -10,34 +10,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CategoryData extends DataBaseHelper {
+public class CategoryData extends ArrayList<Category> {
     // TODO : inject database add,delete,update method here to make it fresh.
-    private ArrayList<Category> data;
-    private final Context context;
-
-    public CategoryData(Context context) {
-        super(context);
+    private Context context;
+    private DataBaseHelper db;
+    public CategoryData getInstance(Context context){
         this.context = context;
-        init();
+        db = new DataBaseHelper(context);
+        return db.getCategory();
     }
-
-    private void init() {
-        data = new DataBaseHelper(this.context).getCategory();
+    public void add(String category){
+        Category map = new Category();
+        map.setCategory(category);
+        map.setLinks(new ArrayList<>());
+        add(map);
+        db.addLink(null,null,category,null,null);
     }
+    public void set(int position,String category){
+        Category map = get(position);
+        map.setCategory(category);
+        set(position,map);
 
-    public int size() {
-        return data.size();
-    }
-
-    public void add() {
-
-    }
-
-    public String getCategory(int position){
-        return data.get(position).getCategory();
-    }
-
-    public List<String> getLinks(int position){
-        return data.get(position).getLinks();
     }
 }

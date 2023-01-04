@@ -13,21 +13,45 @@ import com.codewall.keeplinks.databinding.DialogAddCategoryBinding;
 
 public class AddCategoryDialog extends AlertDialog {
     DialogAddCategoryBinding binding;
-    AddClickListener addClickListener;
+    private AddClickListener addClickListener;
+    private boolean isEdit;
+    private EditListener editListener;
     public AddCategoryDialog(@NonNull Context context) {
         super(context);
         binding = DialogAddCategoryBinding.inflate(LayoutInflater.from(context));
         this.setView(binding.getRoot());
         this.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         binding.btnAddDialog.setOnClickListener(v -> {
-            addClickListener.onClick(String.valueOf(binding.textCategory.getText()));
+            if (isEdit){
+                editListener.onEdited(String.valueOf(binding.textCategory.getText()));
+            } else {
+                addClickListener.onClick(String.valueOf(binding.textCategory.getText()));
+            }
+            dismiss();
         });
-        Dialog dialog = new Dialog(context);
     }
+
+    @Override
+    public void show() {
+        super.show();
+        isEdit = false;
+    }
+
+    public void showEdit(EditListener editListener){
+        isEdit = true;
+        super.show();
+        this.editListener = editListener;
+        binding.btnAddDialog.setText("Save");
+    }
+
     public void setOnAddListener(AddClickListener addClickListener){
         this.addClickListener = addClickListener;
     }
+
     public interface AddClickListener{
         void onClick(String string);
+    }
+    public interface EditListener{
+        void onEdited(String string);
     }
 }

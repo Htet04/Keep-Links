@@ -37,7 +37,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        binding.categoryName.setText((CharSequence) data.getCategory(position));
+        binding.categoryName.setText(data.get(position).getCategory());
 
         holder.itemView.setOnLongClickListener(v -> {
             SheetDialog dialog = new SheetDialog(holder.itemView.getContext());

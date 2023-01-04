@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.codewall.keeplinks.data.CategoryData;
 import com.codewall.keeplinks.data.model.Category;
 import com.codewall.keeplinks.data.model.Home;
 import com.google.gson.Gson;
@@ -115,11 +116,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     // TODO: Un-finish method
-    public ArrayList<Category> getCategory() {
+    public CategoryData getCategory() {
         db = this.getReadableDatabase();
 
         // return ပြန်မယ့်ဒေတာ
-        ArrayList<Category> data = new ArrayList<>();
+        CategoryData data = new CategoryData();
 
         // Table ထဲမှာရှိတဲ့ content တွေ အကုန်ယူမယ် ပြီးရင် category အလိုက်စစ်ထည့်ပြီး အပေါ်က data ထဲပြန်ထည့်မယ်
         List<Home> unFilterData = getHomeData();
