@@ -30,6 +30,5 @@ public class CategoryData extends ArrayList<Category> {
         Category map = get(position);
         map.setCategory(category);
         set(position,map);
-
     }
 }

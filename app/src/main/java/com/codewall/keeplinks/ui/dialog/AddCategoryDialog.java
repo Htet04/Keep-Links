@@ -37,10 +37,11 @@ public class AddCategoryDialog extends AlertDialog {
         isEdit = false;
     }
 
-    public void showEdit(EditListener editListener){
+    public void showEdit(String old,EditListener editListener){
         isEdit = true;
         super.show();
         this.editListener = editListener;
+        binding.textCategory.setText(old);
         binding.btnAddDialog.setText("Save");
     }
 

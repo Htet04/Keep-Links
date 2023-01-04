@@ -35,6 +35,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final int K_NOTE = 4;
     public static final int K_SAVED_DATE = 5;
 
+    private final String[] columns = {ID,NAME,LINK,CATEGORY,SAVED_DATE,NOTE};
+
     private Context context;
     private SQLiteDatabase db;
 

@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.codewall.keeplinks.R;
 import com.codewall.keeplinks.adapter.CategoryAdapter;
@@ -44,8 +45,9 @@ public class CategoryFragment extends Fragment {
         adapter.setOnItemLongClickListener((btn_type, position) -> {
             switch (btn_type) {
                 case BUTTON_EDIT: {
-                    dialog.showEdit(string -> {
-
+                    dialog.showEdit(data.get(position).getCategory(),string -> {
+                        data.set(position,string);
+                        ((RecyclerView.Adapter<?>)binding.categoryRecycler.getAdapter()).notifyDataSetChanged();
                     });
                     break;
                 }
