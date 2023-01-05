@@ -33,8 +33,8 @@ public class CategoryFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentCategoryBinding.inflate(inflater, container, false);
 
-//        data = new CategoryData().getInstance(requireContext());
-        data = new CategoryData();
+        data = new CategoryData().getInstance(requireContext());
+
         dialog = new AddCategoryDialog(requireContext());
         adapter = new CategoryAdapter(data);
 

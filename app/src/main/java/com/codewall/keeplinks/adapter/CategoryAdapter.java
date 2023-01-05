@@ -44,7 +44,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
             dialog.setCate();
             dialog.setOnButtonClickListener(btn_type -> {
                 onItemLongClickListener.onLongClick(btn_type,position);
-                notifyDataSetChanged();
                 dialog.dismiss();
             });
             dialog.show();

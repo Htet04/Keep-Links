@@ -9,10 +9,11 @@ import android.util.Log;
 
 import com.codewall.keeplinks.data.CategoryData;
 import com.codewall.keeplinks.data.HomeData;
+import com.codewall.keeplinks.data.model.Category;
 import com.codewall.keeplinks.data.model.Home;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
@@ -118,39 +119,30 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public CategoryData getCategory() {
         db = this.getReadableDatabase();
-
-        // return ပြန်မယ့်ဒေတာ
         CategoryData data = new CategoryData();
+        List<Integer> ids = new ArrayList<>();
 
-        // TODO: edit here
-        Cursor cursorGp = db.rawQuery("SELECT " + CATEGORY + " FROM " + LINKS_TABLE + " GROUP BY " + CATEGORY, null);
-        List<String> cg = new ArrayList<>();
-        List<Integer> cid = new ArrayList<>();
-        while (cursorGp.moveToNext()) {
-            cg.add(cursorGp.getString(0));
+        //temp data
+        List<String> cat = new ArrayList<>();
+        Cursor cg = db.rawQuery("SELECT " + CATEGORY + " FROM " + LINKS_TABLE + " GROUP BY " + CATEGORY, null);
+        while (cg.moveToNext()) {
+            cat.add(cg.getString(0));
         }
-        StringBuilder builder = new StringBuilder();
-
-        for (String s :
-                cg) {
-            Cursor cursor = db.rawQuery("SELECT id FROM " + LINKS_TABLE + " WHERE " + CATEGORY + " ='"+s+"'", null);
-
-            cid = new ArrayList<>();
-            while (cursor.moveToNext()) {
-                cid.add(Integer.valueOf(cursor.getString(0)));
-/*
-                builder.append("Name: ").append(cursor.getString(K_NAME)).append("\n")
-                        .append("Link: ").append(cursor.getString(K_LINK)).append("\n")
-                        .append("Cate: ").append(cursor.getString(K_CATEGORY)).append("\n")
-                        .append("Sd: ").append(cursor.getString(K_SAVED_DATE)).append("\n")
-                        .append("Note: ").append(cursor.getString(K_NOTE)).append("\n\n");
-*/
+        for(String s:cat){
+            Cursor cursor = db.rawQuery("SELECT " + ID + "," + CATEGORY +
+                    " FROM " + LINKS_TABLE +
+                    " WHERE " + CATEGORY + "='" + s + "'", null);
+            ids = new ArrayList<>();
+            while (cursor.moveToNext()){
+                ids.add(Integer.valueOf(cursor.getString(0)));
             }
-            cursor.close();
-            Log.i(TAG, "getCategory: ".concat(Arrays.deepToString(cid.toArray())));
+            Category c = new Category();
+            c.setCategory(s);
+            c.setIds(ids);
+            data.add(c);
         }
+        cg.close();
 
-        cursorGp.close();
         return data;
     }
 
