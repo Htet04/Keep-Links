@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.codewall.keeplinks.R;
 import com.codewall.keeplinks.adapter.CategoryAdapter;
@@ -24,7 +23,6 @@ public class CategoryFragment extends Fragment {
 
     CategoryData data;
     FragmentCategoryBinding binding;
-    AddCategoryDialog dialog;
     CategoryAdapter adapter;
 
 
@@ -35,7 +33,6 @@ public class CategoryFragment extends Fragment {
 
         data = new CategoryData().getInstance(requireContext());
 
-        dialog = new AddCategoryDialog(requireContext());
         adapter = new CategoryAdapter(data);
 
         binding.categoryRecycler.setHasFixedSize(true);
@@ -46,19 +43,22 @@ public class CategoryFragment extends Fragment {
         adapter.setOnItemLongClickListener((btn_type, position) -> {
             switch (btn_type) {
                 case BUTTON_EDIT: {
-                    dialog.showEdit(data.get(position).getCategory(),string -> {
-
+                    new AddCategoryDialog(requireContext()).showEdit(data.get(position).getCategory(), string -> {
+                        // TODO : edit category
+                        data.setCategory(position,string);
+                        adapter.notifyDataSetChanged();
                     });
                     break;
                 }
                 case BUTTON_DELETE: {
-
+                    //TODO : delete category
                     break;
                 }
             }
         });
 
         FloatingActionButton mainFab = requireActivity().findViewById(R.id.main_fab);
+        AddCategoryDialog dialog = new AddCategoryDialog(requireContext());
         dialog.setOnAddListener(string -> {
             // TODO : fix here
             Toast.makeText(requireContext(), string, Toast.LENGTH_SHORT).show();

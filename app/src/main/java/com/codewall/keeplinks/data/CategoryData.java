@@ -19,4 +19,13 @@ public class CategoryData extends ArrayList<Category> {
         db = new DataBaseHelper(context);
         return db.getCategory();
     }
+    public void setCategory(int position,String str){
+        Category category = get(position);
+        category.setCategory(str);
+        set(position,category);
+        for (int n :
+                category.getIds()) {
+
+        }
+    }
 }

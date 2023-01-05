@@ -117,6 +117,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
+    //Category Section
     public CategoryData getCategory() {
         db = this.getReadableDatabase();
         CategoryData data = new CategoryData();
@@ -144,6 +145,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cg.close();
 
         return data;
+    }
+
+    public void setCategory(long id,String category){
+        //TODO : edit category only
     }
 
     public String getValue(int id, int index) {
