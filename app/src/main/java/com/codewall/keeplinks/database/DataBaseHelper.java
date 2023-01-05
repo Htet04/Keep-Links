@@ -8,12 +8,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.codewall.keeplinks.data.CategoryData;
-import com.codewall.keeplinks.data.model.Category;
+import com.codewall.keeplinks.data.HomeData;
 import com.codewall.keeplinks.data.model.Home;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.List;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
@@ -35,7 +34,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final int K_NOTE = 4;
     public static final int K_SAVED_DATE = 5;
 
-    private final String[] columns = {ID,NAME,LINK,CATEGORY,SAVED_DATE,NOTE};
+    private final String[] columns = {ID, NAME, LINK, CATEGORY, SAVED_DATE, NOTE};
 
     private Context context;
     private SQLiteDatabase db;
@@ -101,8 +100,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    public ArrayList<Home> getHomeData() {
-        ArrayList<Home> data = new ArrayList<>();
+    public HomeData getHomeData() {
+        HomeData data = new HomeData();
         db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + LINKS_TABLE, null);
         while (cursor.moveToNext()) {
@@ -117,59 +116,41 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
-    // TODO: Un-finish method
     public CategoryData getCategory() {
         db = this.getReadableDatabase();
 
         // return ပြန်မယ့်ဒေတာ
         CategoryData data = new CategoryData();
 
-        // Table ထဲမှာရှိတဲ့ content တွေ အကုန်ယူမယ် ပြီးရင် category အလိုက်စစ်ထည့်ပြီး အပေါ်က data ထဲပြန်ထည့်မယ်
-        List<Home> unFilterData = getHomeData();
-
-        Cursor cursor = db.rawQuery("SELECT * FROM " + LINKS_TABLE, null);
-        // Content တစ်ခုချင်းရဲ့ position ကိုယူသုံးဖို့
-        int n = 0;
-
-        for (Home map : unFilterData) {
-            // Category အလိုက် link တွေကို စုထားဖို့
-            List<String> links = new ArrayList<>();
-            // Category Data class
-            Category category;
-            if (data.size() > 0 && data.get(n).getCategory().equalsIgnoreCase(map.getCategory())) {
-                // null Object Reference မဖြစ်ဖု့ obj size အနည်းဆုံးတစ်ခုရှိမှ && အနောက်က condition ဆက် စစ်မယ်
-                // data size က 0 ထက်ကြီးရင် return ပြန်မယ့် data ထဲ ဒီ Category ရှိရင်
-                // အဲ့ဒီ links List ကိုယူမယ်
-                links = data.get(n).getLinks();
-                // link အသစ် ထပ်ထည့်မယ်
-                links.add(map.getLink());
-                // n ကြိမ်မြောက်မှာရှိတဲ့ Category data ကို ယူမယ်
-                category = data.get(n);
-                // link အသစ်ထည့်ထားတဲ့ links List ကို ထည့်ပေးလိုက်မယ်
-                category.setLinks(links);
-                // data ထဲ n ကြိမ်မြောက်မှာ link အသစ်ပါတဲ့ Category data ကို update လိုက်မယ်
-                data.set(n, category);
-                n++;
-            } else {
-                // data size 0 (Zero) ဖြစ်ရင် အသစ်ထပ်ထည့်ဖို့
-                // data တစ်ခုထည့်ပြီတာနဲ့ data size တိုးသွားပြီမို့ ဆက်မလုပ်တော့ဘူး
-                // Category အသစ်အတွက် တစ်ခါ ပဲ အလုပ်လုပ်တယ် ရှိပြီးသား Category အတွက်ဆို
-                // အပေါ်က condition က အလုပ်လုပ်မယ်
-
-                category = new Category();
-                // Category name ထည့်မယ်
-                category.setCategory(map.getCategory());
-                //links ထဲကို link ထည့်မယ်
-                links.add(map.getLink());
-                //links List ကို Category data ထဲထည့်မယ်
-                category.setLinks(links);
-                //Category name နဲ့ သူ့ရဲ့ links ကို data ထဲထည့်မယ်
-                data.add(category);
-            }
-
+        // TODO: edit here
+        Cursor cursorGp = db.rawQuery("SELECT " + CATEGORY + " FROM " + LINKS_TABLE + " GROUP BY " + CATEGORY, null);
+        List<String> cg = new ArrayList<>();
+        List<Integer> cid = new ArrayList<>();
+        while (cursorGp.moveToNext()) {
+            cg.add(cursorGp.getString(0));
         }
-        cursor.close();
-        Log.i(TAG, "getCategory: \n" + new Gson().toJson(data));
+        StringBuilder builder = new StringBuilder();
+
+        for (String s :
+                cg) {
+            Cursor cursor = db.rawQuery("SELECT id FROM " + LINKS_TABLE + " WHERE " + CATEGORY + " ='"+s+"'", null);
+
+            cid = new ArrayList<>();
+            while (cursor.moveToNext()) {
+                cid.add(Integer.valueOf(cursor.getString(0)));
+/*
+                builder.append("Name: ").append(cursor.getString(K_NAME)).append("\n")
+                        .append("Link: ").append(cursor.getString(K_LINK)).append("\n")
+                        .append("Cate: ").append(cursor.getString(K_CATEGORY)).append("\n")
+                        .append("Sd: ").append(cursor.getString(K_SAVED_DATE)).append("\n")
+                        .append("Note: ").append(cursor.getString(K_NOTE)).append("\n\n");
+*/
+            }
+            cursor.close();
+            Log.i(TAG, "getCategory: ".concat(Arrays.deepToString(cid.toArray())));
+        }
+
+        cursorGp.close();
         return data;
     }
 

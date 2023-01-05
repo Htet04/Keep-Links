@@ -1,10 +1,12 @@
 package com.codewall.keeplinks.util;
 
+import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class Utils {
 

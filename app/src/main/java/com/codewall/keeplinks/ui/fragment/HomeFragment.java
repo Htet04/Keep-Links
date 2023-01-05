@@ -5,11 +5,9 @@ import static com.codewall.keeplinks.ui.dialog.SheetDialog.BUTTON_DELETE;
 import static com.codewall.keeplinks.ui.dialog.SheetDialog.BUTTON_EDIT;
 import static com.codewall.keeplinks.ui.dialog.SheetDialog.BUTTON_OPEN;
 import static com.codewall.keeplinks.ui.dialog.SheetDialog.BUTTON_SHARE;
-import static com.codewall.keeplinks.util.Utils.copyToClipboard;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +16,6 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,7 +26,6 @@ import com.codewall.keeplinks.data.HomeData;
 import com.codewall.keeplinks.database.DataBaseHelper;
 import com.codewall.keeplinks.databinding.FragmentHomeBinding;
 import com.codewall.keeplinks.ui.LinkEditorActivity;
-import com.codewall.keeplinks.util.Utils;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class HomeFragment extends Fragment {
@@ -46,8 +41,7 @@ public class HomeFragment extends Fragment {
         @Override
         public void onActivityResult(ActivityResult result) {
             if (result.getResultCode() == 10) {
-                data = new HomeData(requireContext());
-                binding.homeRecycler.setAdapter(new HomeAdapter(data));
+                ((RecyclerView.Adapter<?>)binding.homeRecycler.getAdapter()).notifyDataSetChanged();
             }
         }
     });
@@ -61,8 +55,10 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         db = new DataBaseHelper(getContext());
-        data = new HomeData(requireContext());
+        data = new HomeData().getInstance(requireContext());
         adapter = new HomeAdapter(data);
+
+        db.getCategory();
 
         binding.homeRecycler.setHasFixedSize(true);
         binding.homeRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));

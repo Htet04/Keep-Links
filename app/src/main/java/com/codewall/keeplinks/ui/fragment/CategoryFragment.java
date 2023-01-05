@@ -33,7 +33,8 @@ public class CategoryFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentCategoryBinding.inflate(inflater, container, false);
 
-        data = new CategoryData().getInstance(requireContext());
+//        data = new CategoryData().getInstance(requireContext());
+        data = new CategoryData();
         dialog = new AddCategoryDialog(requireContext());
         adapter = new CategoryAdapter(data);
 
@@ -46,8 +47,7 @@ public class CategoryFragment extends Fragment {
             switch (btn_type) {
                 case BUTTON_EDIT: {
                     dialog.showEdit(data.get(position).getCategory(),string -> {
-                        data.set(position,string);
-                        ((RecyclerView.Adapter<?>)binding.categoryRecycler.getAdapter()).notifyDataSetChanged();
+
                     });
                     break;
                 }

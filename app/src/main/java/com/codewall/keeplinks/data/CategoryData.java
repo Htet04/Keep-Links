@@ -19,16 +19,4 @@ public class CategoryData extends ArrayList<Category> {
         db = new DataBaseHelper(context);
         return db.getCategory();
     }
-    public void add(String category){
-        Category map = new Category();
-        map.setCategory(category);
-        map.setLinks(new ArrayList<>());
-        add(map);
-        db.addLink(null,null,category,null,null);
-    }
-    public void set(int position,String category){
-        Category map = get(position);
-        map.setCategory(category);
-        set(position,map);
-    }
 }
