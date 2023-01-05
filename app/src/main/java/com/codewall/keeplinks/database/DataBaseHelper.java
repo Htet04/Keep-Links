@@ -141,6 +141,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             c.setCategory(s);
             c.setIds(ids);
             data.add(c);
+
+            cursor.close();
         }
         cg.close();
 
@@ -149,6 +151,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public void setCategory(long id,String category){
         //TODO : edit category only
+
     }
 
     public String getValue(int id, int index) {
