@@ -13,7 +13,6 @@ import com.codewall.keeplinks.adapter.HomeAdapter;
 import com.codewall.keeplinks.data.HomeData;
 import com.codewall.keeplinks.database.DataBaseHelper;
 import com.codewall.keeplinks.databinding.FragmentHomeBinding;
-import com.codewall.keeplinks.ui.dialog.AddInfoDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class HomeFragment extends Fragment {
@@ -41,8 +40,7 @@ public class HomeFragment extends Fragment {
         FloatingActionButton mainFab = requireActivity().findViewById(R.id.main_fab);
 
         mainFab.setOnClickListener(v -> {
-            AddInfoDialog dialog = new AddInfoDialog(getContext());
-            dialog.show();
+
         });
         return binding.getRoot();
     }
