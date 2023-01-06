@@ -6,6 +6,8 @@ import static com.codewall.keeplinks.ui.dialog.SheetDialog.BUTTON_EDIT;
 import static com.codewall.keeplinks.ui.dialog.SheetDialog.BUTTON_OPEN;
 import static com.codewall.keeplinks.ui.dialog.SheetDialog.BUTTON_SHARE;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,14 +16,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.codewall.keeplinks.data.HomeData;
-import com.codewall.keeplinks.database.DataBaseHelper;
 import com.codewall.keeplinks.databinding.HomeItemLayoutBinding;
 import com.codewall.keeplinks.ui.dialog.SheetDialog;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder> {
 
     HomeItemLayoutBinding binding;
-    DataBaseHelper db;
     HomeData data;
 
     public HomeAdapter(HomeData data) {
@@ -38,9 +38,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
     @Override
     public void onBindViewHolder(@NonNull HomeViewHolder holder, int position) {
 
-        binding.linkName.setText(data.get(position).getCategory());
-        binding.linktext.setText(data.get(position).getLink());
-        binding.savedDate.setText(data.get(position).getSavedDate());
+        binding.linkName.setText(data.get(position).getCATEGORY());
+        binding.linktext.setText(data.get(position).getLINK());
+        binding.savedDate.setText(data.get(position).getSAVEDDATE());
 
         holder.itemView.setOnLongClickListener(v -> {
             SheetDialog dialog = new SheetDialog(holder.itemView.getContext());
@@ -55,13 +55,15 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
                         break;
                     }
                     case BUTTON_OPEN: {
+
                         break;
                     }
                     case BUTTON_SHARE: {
+                        //holder.itemView.getContext().startActivity(Intent.createChooser(new Intent().setAction(Intent.ACTION_SEND).setDataAndType(Uri.parse(data.get(position).getLINK()),"*/*").putExtra(Intent.EXTRA_TEXT,data.get(position).getLINK()),null));
                         break;
                     }
                     case BUTTON_DELETE: {
-
+                        data.rm(position);
                         break;
                     }
                     default: {

@@ -101,16 +101,15 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     public HomeData getHomeData() {
-        HomeData data = new HomeData();
+        HomeData data = new HomeData(this);
         db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + LINKS_TABLE, null);
         while (cursor.moveToNext()) {
-            Home map = new Home(cursor.getString(1),
-                    cursor.getString(2),
-                    cursor.getString(3),
-                    cursor.getString(4),
-                    cursor.getString(5));
-            data.add(map);
+            data.add(new Home().setName(cursor.getString(1))
+                            .setLink(cursor.getString(2))
+                            .setCategory(cursor.getString(3))
+                            .setNote(cursor.getString(4))
+                    .setSavedDate(cursor.getString(5)));
         }
         cursor.close();
         return data;

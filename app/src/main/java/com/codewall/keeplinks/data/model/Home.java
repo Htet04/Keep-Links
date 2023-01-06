@@ -1,57 +1,56 @@
 package com.codewall.keeplinks.data.model;
 
-public class Home {
-    private String name, link, category, savedDate, note;
+import java.util.HashMap;
 
-    public Home() {
-        //empty constructor
+public class Home extends HashMap<String,String> {
+    private final String NAME ="name",
+            LINK ="link",
+            CATEGORY ="category",
+            SAVEDDATE ="savedDate",
+            NOTE ="note";
+
+    public String getNAME() {
+        return get(NAME);
     }
 
-    public Home(String name, String link, String category, String savedDate, String note) {
-        this.name = name;
-        this.link = link;
-        this.category = category;
-        this.savedDate = savedDate;
-        this.note = note;
+    public String getLINK() {
+        return get(LINK);
     }
 
-    public String getName() {
-        return name;
+    public String getCATEGORY() {
+        return get(CATEGORY);
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getSAVEDDATE() {
+        return get(SAVEDDATE);
     }
 
-    public String getLink() {
-        return link;
+    public String getNOTE() {
+        return get(NOTE);
     }
 
-    public void setLink(String link) {
-        this.link = link;
+    public Home setName(String name){
+        put(NAME,name);
+        return this;
     }
 
-    public String getCategory() {
-        return category;
+    public Home setLink(String link){
+        put(LINK,link);
+        return this;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public Home setCategory(String category){
+        put(CATEGORY,category);
+        return this;
     }
 
-    public String getSavedDate() {
-        return savedDate;
+    public Home setSavedDate(String saveddate){
+        put(SAVEDDATE,saveddate);
+        return this;
     }
 
-    public void setSavedDate(String savedDate) {
-        this.savedDate = savedDate;
-    }
-
-    public String getNote() {
-        return note;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
+    public Home setNote(String note){
+        put(NOTE,note);
+        return this;
     }
 }
