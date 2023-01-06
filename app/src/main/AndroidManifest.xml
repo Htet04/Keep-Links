@@ -16,29 +16,6 @@
         android:theme="@style/Theme.KeepLinks"
         tools:targetApi="31">
         <activity
-            android:name=".ui.LinkEditorActivity"
-            android:exported="true"
-            android:parentActivityName=".ui.MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
-            tools:ignore="LockedOrientationActivity">
-            <!--
-            Not understanding codes
-            android:noHistory="true"
-            android:launchMode="singleInstance"
-            android:excludeFromRecents="true"
-            -->
-            <intent-filter>
-                <action android:name="android.intent.action.SEND" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="text/*" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".ui.SplashScreenActivity"
             android:exported="true"
             android:screenOrientation="portrait"

@@ -1,6 +1,5 @@
 package com.codewall.keeplinks.adapter;
 
-import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.codewall.keeplinks.R;
 import com.codewall.keeplinks.data.CategoryData;
 import com.codewall.keeplinks.databinding.CatagoryItemLayoutBinding;
-import com.codewall.keeplinks.ui.dialog.AddCategoryDialog;
 import com.codewall.keeplinks.ui.dialog.SheetDialog;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyViewHolder> {
