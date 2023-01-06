@@ -7,100 +7,112 @@
     tools:context=".ui.LinkEditorActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/appbarLayout"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent">
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            app:layout_constraintTop_toTopOf="parent"
-            android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             android:layout_width="match_parent"
-            android:layout_height="?android:attr/actionBarSize"/>
+            android:layout_height="?android:attr/actionBarSize"
+            android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nameLayout"
-        android:hint="Link Name"
         style="@style/Theme.KeepLinks.TextInputLayout.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Link Name"
         app:layout_constraintTop_toBottomOf="@id/appbarLayout">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/name"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/linkLayout"
-        android:hint="Link"
         style="@style/Theme.KeepLinks.TextInputLayout.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Link"
         app:layout_constraintTop_toBottomOf="@id/nameLayout">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/link"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/categoryLayout"
-        android:hint="category"
         style="@style/Theme.KeepLinks.TextInputLayout.Drop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="category"
         app:layout_constraintTop_toBottomOf="@id/linkLayout">
+
         <com.google.android.material.textfield.MaterialAutoCompleteTextView
             android:id="@+id/category"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/dateLayout"
-        android:hint="Date"
         style="@style/Theme.KeepLinks.TextInputLayout.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Date"
         app:layout_constraintTop_toBottomOf="@id/categoryLayout">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/date"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/noteLayout"
-        android:hint="Note"
         style="@style/Theme.KeepLinks.TextInputLayout.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Note"
         app:layout_constraintTop_toBottomOf="@id/dateLayout">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/note"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="start"
-            android:minHeight="80dp"/>
+            android:minHeight="80dp" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:text="Cancel"
         android:textAllCaps="false"
-        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="@id/btn_add"
-        app:layout_constraintEnd_toStartOf="@id/btn_add"/>
+        app:layout_constraintEnd_toStartOf="@id/btn_add" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:text="Add"
         android:textAllCaps="false"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

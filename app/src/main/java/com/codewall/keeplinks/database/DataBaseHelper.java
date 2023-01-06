@@ -5,13 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import com.codewall.keeplinks.data.CategoryData;
 import com.codewall.keeplinks.data.HomeData;
 import com.codewall.keeplinks.data.model.Category;
 import com.codewall.keeplinks.data.model.Home;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,6 +81,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         values.put(NOTE, note);
         values.put(SAVED_DATE, saved_date);
         db.update(LINKS_TABLE, values, ID + "=" + id, null);
+        db.close();
     }
 
     public void deleteLink(long id) {
@@ -120,21 +119,21 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     //Category Section
     public CategoryData getCategory() {
         db = this.getReadableDatabase();
-        CategoryData data = new CategoryData();
+        CategoryData data = new CategoryData(this);
         List<Integer> ids = new ArrayList<>();
 
         //temp data
         List<String> cat = new ArrayList<>();
-        Cursor cg = db.rawQuery("SELECT " + CATEGORY + " FROM " + LINKS_TABLE + " GROUP BY " + CATEGORY, null);
+        Cursor cg = db.rawQuery("SELECT " + CATEGORY + " FROM " + LINKS_TABLE + " GROUP BY " + CATEGORY + ";", null);
         while (cg.moveToNext()) {
             cat.add(cg.getString(0));
         }
-        for(String s:cat){
+        for (String s : cat) {
             Cursor cursor = db.rawQuery("SELECT " + ID + "," + CATEGORY +
                     " FROM " + LINKS_TABLE +
-                    " WHERE " + CATEGORY + "='" + s + "'", null);
+                    " WHERE " + CATEGORY + "='" + s + "';", null);
             ids = new ArrayList<>();
-            while (cursor.moveToNext()){
+            while (cursor.moveToNext()) {
                 ids.add(Integer.valueOf(cursor.getString(0)));
             }
             Category c = new Category();
@@ -145,15 +144,26 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             cursor.close();
         }
         cg.close();
-
         return data;
     }
 
-    public void setCategory(long id,String category){
+    public void setCategory(long id, String category) {
         //TODO : edit category only
-
+        db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + LINKS_TABLE + " WHERE id=" + id, null);
+        cursor.moveToNext();
+        String name = cursor.getString(K_NAME),
+                link = cursor.getString(K_LINK),
+                note = cursor.getString(K_NOTE),
+                sd = cursor.getString(K_SAVED_DATE);
+        updateLink(id, name, link, category, note, sd);
+        cursor.close();
+        db.close();
     }
 
+    //end of Category section
+
+    @Deprecated
     public String getValue(int id, int index) {
         db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + LINKS_TABLE, null);

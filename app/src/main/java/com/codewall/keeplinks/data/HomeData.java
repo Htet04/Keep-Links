@@ -11,7 +11,8 @@ import java.util.ArrayList;
 public class HomeData extends ArrayList<Home> {
     private Context context;
     private DataBaseHelper db;
-    public HomeData getInstance(Context context){
+
+    public HomeData getInstance(Context context) {
         this.context = context;
         db = new DataBaseHelper(context);
         return db.getHomeData();

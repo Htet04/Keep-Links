@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/menu_bnv_home"
-        android:title="Home"
-        android:icon="@drawable/ic_round_home_24"/>
-    <item android:id="@+id/menu_bnv_category"
-        android:title="Category"
-        android:icon="@drawable/ic_baseline_category_24"/>
+    <item
+        android:id="@+id/menu_bnv_home"
+        android:icon="@drawable/ic_round_home_24"
+        android:title="Home" />
+    <item
+        android:id="@+id/menu_bnv_category"
+        android:icon="@drawable/ic_baseline_category_24"
+        android:title="Category" />
     <item
         android:id="@+id/browser"
         android:icon="@drawable/ic_baseline_preview_24"

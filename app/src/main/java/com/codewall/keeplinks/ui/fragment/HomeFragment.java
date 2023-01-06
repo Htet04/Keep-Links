@@ -1,11 +1,5 @@
 package com.codewall.keeplinks.ui.fragment;
 
-import static com.codewall.keeplinks.ui.dialog.SheetDialog.BUTTON_COPY;
-import static com.codewall.keeplinks.ui.dialog.SheetDialog.BUTTON_DELETE;
-import static com.codewall.keeplinks.ui.dialog.SheetDialog.BUTTON_EDIT;
-import static com.codewall.keeplinks.ui.dialog.SheetDialog.BUTTON_OPEN;
-import static com.codewall.keeplinks.ui.dialog.SheetDialog.BUTTON_SHARE;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -41,7 +35,7 @@ public class HomeFragment extends Fragment {
         @Override
         public void onActivityResult(ActivityResult result) {
             if (result.getResultCode() == 10) {
-                ((RecyclerView.Adapter<?>)binding.homeRecycler.getAdapter()).notifyDataSetChanged();
+                ((RecyclerView.Adapter<?>) binding.homeRecycler.getAdapter()).notifyDataSetChanged();
             }
         }
     });
@@ -63,33 +57,6 @@ public class HomeFragment extends Fragment {
         binding.homeRecycler.setHasFixedSize(true);
         binding.homeRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         binding.homeRecycler.setAdapter(adapter);
-
-        adapter.setOnItemLongClickListener((btn_type,position) -> {
-            switch (btn_type){
-                case BUTTON_COPY:{
-
-                    break;
-                }
-                case BUTTON_EDIT:{
-
-                    break;
-                }
-                case BUTTON_OPEN:{
-                    break;
-                }
-                case BUTTON_SHARE:{
-                    break;
-                }
-                case BUTTON_DELETE:{
-
-                    break;
-                }
-                default:{
-
-                }
-            }
-
-        });
         // TODO : add data manage method with listener Ok
 
         FloatingActionButton mainFab = requireActivity().findViewById(R.id.main_fab);

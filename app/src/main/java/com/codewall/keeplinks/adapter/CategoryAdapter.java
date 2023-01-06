@@ -10,19 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.codewall.keeplinks.R;
 import com.codewall.keeplinks.data.CategoryData;
-import com.codewall.keeplinks.database.DataBaseHelper;
 import com.codewall.keeplinks.databinding.CatagoryItemLayoutBinding;
-import com.codewall.keeplinks.listener.OnItemLongClickListener;
 import com.codewall.keeplinks.ui.dialog.SheetDialog;
-
-import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyViewHolder> {
     CatagoryItemLayoutBinding binding;
     CategoryData data;
     private String title;
-
-    private OnItemLongClickListener onItemLongClickListener;
 
     public CategoryAdapter(CategoryData data) {
         this.data = data;
@@ -43,16 +37,21 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
             SheetDialog dialog = new SheetDialog(holder.itemView.getContext());
             dialog.setCate();
             dialog.setOnButtonClickListener(btn_type -> {
-                onItemLongClickListener.onLongClick(btn_type,position);
+                switch (btn_type) {
+                    case SheetDialog.BUTTON_EDIT: {
+
+                        break;
+                    }
+                    case SheetDialog.BUTTON_DELETE: {
+
+                        break;
+                    }
+                }
                 dialog.dismiss();
             });
             dialog.show();
             return true;
         });
-    }
-
-    public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {
-        this.onItemLongClickListener = onItemLongClickListener;
     }
 
     @Override

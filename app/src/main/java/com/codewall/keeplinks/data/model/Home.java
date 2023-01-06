@@ -1,9 +1,9 @@
 package com.codewall.keeplinks.data.model;
 
 public class Home {
-    private String name,link,category,savedDate,note;
+    private String name, link, category, savedDate, note;
 
-    public Home(){
+    public Home() {
         //empty constructor
     }
 

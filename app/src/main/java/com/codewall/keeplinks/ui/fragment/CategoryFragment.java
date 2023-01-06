@@ -1,9 +1,7 @@
 package com.codewall.keeplinks.ui.fragment;
 
-import static com.codewall.keeplinks.ui.dialog.SheetDialog.BUTTON_DELETE;
-import static com.codewall.keeplinks.ui.dialog.SheetDialog.BUTTON_EDIT;
-
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +13,11 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import com.codewall.keeplinks.R;
 import com.codewall.keeplinks.adapter.CategoryAdapter;
 import com.codewall.keeplinks.data.CategoryData;
+import com.codewall.keeplinks.database.DataBaseHelper;
 import com.codewall.keeplinks.databinding.FragmentCategoryBinding;
 import com.codewall.keeplinks.ui.dialog.AddCategoryDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.Gson;
 
 public class CategoryFragment extends Fragment {
 
@@ -31,7 +31,8 @@ public class CategoryFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentCategoryBinding.inflate(inflater, container, false);
 
-        data = new CategoryData().getInstance(requireContext());
+        data = new DataBaseHelper(getContext()).getCategory();
+        Log.i("caterr", "onCreateView: " + new Gson().toJson(data));
 
         adapter = new CategoryAdapter(data);
 
@@ -39,23 +40,7 @@ public class CategoryFragment extends Fragment {
 
         binding.categoryRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2));
         binding.categoryRecycler.setAdapter(adapter);
-
-        adapter.setOnItemLongClickListener((btn_type, position) -> {
-            switch (btn_type) {
-                case BUTTON_EDIT: {
-                    new AddCategoryDialog(requireContext()).showEdit(data.get(position).getCategory(), string -> {
-                        // TODO : edit category
-                        data.setCategory(position,string);
-                        adapter.notifyDataSetChanged();
-                    });
-                    break;
-                }
-                case BUTTON_DELETE: {
-                    //TODO : delete category
-                    break;
-                }
-            }
-        });
+        AddCategoryDialog edit = new AddCategoryDialog(getContext());
 
         FloatingActionButton mainFab = requireActivity().findViewById(R.id.main_fab);
         AddCategoryDialog dialog = new AddCategoryDialog(requireContext());
@@ -67,7 +52,8 @@ public class CategoryFragment extends Fragment {
         mainFab.setOnClickListener(v -> {
             /*MyDialog myDialog = new MyDialog();
             myDialog.show(getActivity().getSupportFragmentManager(), "my");*/
-            dialog.show();
+//            dialog.show();
+            new DataBaseHelper(requireContext()).addLink("test", "test", "test", "test", "test");
         });
         return binding.getRoot();
 

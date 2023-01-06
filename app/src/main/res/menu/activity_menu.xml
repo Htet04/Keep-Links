@@ -11,8 +11,8 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/menu_toolbar_open_with"
-        android:title="Open With"
         android:icon="@drawable/ic_baseline_open_in_browser_24"
-        app:showAsAction="ifRoom"
-        android:visible="false"/>
+        android:title="Open With"
+        android:visible="false"
+        app:showAsAction="ifRoom" />
 </menu>

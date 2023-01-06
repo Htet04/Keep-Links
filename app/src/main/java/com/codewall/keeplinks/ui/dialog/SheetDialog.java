@@ -45,7 +45,7 @@ public class SheetDialog extends BottomSheetDialog {
     }
 
     private void setting() {
-        if (isCate){
+        if (isCate) {
             binding.copy.getRoot().setVisibility(View.GONE);
             binding.open.getRoot().setVisibility(View.GONE);
             binding.share.getRoot().setVisibility(View.GONE);
@@ -86,7 +86,7 @@ public class SheetDialog extends BottomSheetDialog {
          * {@link #BUTTON_OPEN}
          * {@link #BUTTON_SHARE}
          * {@link #BUTTON_DELETE}
-         * */
+         */
         void onButtonClick(final int btn_type);
     }
 

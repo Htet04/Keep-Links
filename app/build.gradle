@@ -6,7 +6,7 @@ android {
     namespace 'com.codewall.keeplinks'
     compileSdk 32
 
-    buildFeatures{
+    buildFeatures {
         viewBinding true
     }
 
