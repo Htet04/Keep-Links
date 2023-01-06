@@ -13,7 +13,6 @@ public class AddCategoryDialog extends AlertDialog {
     private AddClickListener addClickListener;
     private boolean isEdit;
     private EditListener editListener;
-    private int oldPo;
 
     public AddCategoryDialog(@NonNull Context context) {
         super(context);
@@ -22,7 +21,7 @@ public class AddCategoryDialog extends AlertDialog {
         this.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         binding.btnAddDialog.setOnClickListener(v -> {
             if (isEdit) {
-                editListener.onEdited(oldPo, String.valueOf(binding.textCategory.getText()));
+                editListener.onEdited(String.valueOf(binding.textCategory.getText()));
             } else {
                 addClickListener.onClick(String.valueOf(binding.textCategory.getText()));
             }
@@ -30,9 +29,8 @@ public class AddCategoryDialog extends AlertDialog {
         });
     }
 
-    public void showEdit(String old, int position) {
+    public void showEdit(String old) {
         isEdit = true;
-        oldPo = position;
         super.show();
         binding.textCategory.setText(old);
         binding.btnAddDialog.setText("Save");
@@ -51,6 +49,6 @@ public class AddCategoryDialog extends AlertDialog {
     }
 
     public interface EditListener {
-        void onEdited(int oldPo, String string);
+        void onEdited(String string);
     }
 }
