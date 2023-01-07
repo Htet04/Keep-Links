@@ -6,11 +6,15 @@ import static com.codewall.keeplinks.ui.dialog.SheetDialog.BUTTON_EDIT;
 import static com.codewall.keeplinks.ui.dialog.SheetDialog.BUTTON_OPEN;
 import static com.codewall.keeplinks.ui.dialog.SheetDialog.BUTTON_SHARE;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -38,16 +42,21 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
     @Override
     public void onBindViewHolder(@NonNull HomeViewHolder holder, int position) {
 
-        binding.linkName.setText(data.get(position).getCATEGORY());
-        binding.linktext.setText(data.get(position).getLINK());
-        binding.savedDate.setText(data.get(position).getSAVEDDATE());
+        binding.linkName.setText(data.getCategory(position));
+        binding.linktext.setText(data.getLink(position));
+        binding.savedDate.setText(data.getSavedDate(position));
+
+        holder.itemView.setOnClickListener(v -> {
+            Toast.makeText(holder.itemView.getContext(), String.valueOf(data.getId(position)), Toast.LENGTH_SHORT).show();
+        });
 
         holder.itemView.setOnLongClickListener(v -> {
             SheetDialog dialog = new SheetDialog(holder.itemView.getContext());
             dialog.setOnButtonClickListener(btn_type -> {
                 switch (btn_type) {
                     case BUTTON_COPY: {
-
+                        ((ClipboardManager)holder.itemView.getContext().getSystemService(Context.CLIPBOARD_SERVICE)).setPrimaryClip(ClipData.newPlainText("clipboard",data.get(position).getLink()));
+                        Toast.makeText(holder.itemView.getContext(), "Link Copied!", Toast.LENGTH_SHORT).show();
                         break;
                     }
                     case BUTTON_EDIT: {
@@ -55,7 +64,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
                         break;
                     }
                     case BUTTON_OPEN: {
-
+                        Intent intent = new Intent();
+                        intent.setAction(Intent.ACTION_VIEW);
+                        String url = data.get(position).getLink();
+                        url = url.startsWith("http")?url:"https://"+url;
+                        intent.setData(Uri.parse(url));
+                        holder.itemView.getContext().startActivity(Intent.createChooser(intent,"Open with..."));
                         break;
                     }
                     case BUTTON_SHARE: {
