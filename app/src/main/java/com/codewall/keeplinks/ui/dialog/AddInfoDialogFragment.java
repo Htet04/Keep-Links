@@ -28,11 +28,15 @@ public class AddInfoDialogFragment extends DialogFragment {
                     binding.category.getText().toString(),
                     binding.note.getText().toString(),
                     binding.date.getText().toString());
-            dismiss();
         });
         binding.btnCancel.setOnClickListener(v -> {
             dismiss();
         });
+        binding.name.setText(null);
+        binding.link.setText(null);
+        binding.category.setText(null);
+        binding.note.setText(null);
+        binding.date.setText(null);
         return binding.getRoot();
     }
 

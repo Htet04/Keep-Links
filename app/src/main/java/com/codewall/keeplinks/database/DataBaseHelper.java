@@ -25,13 +25,15 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String NAME = "name";
     public static final String LINK = "link";
     public static final String CATEGORY = "category";
-    public static final String NOTE = "note";
     public static final String SAVED_DATE = "saved_date";
-    public static final int K_NAME = 1;
-    public static final int K_LINK = 2;
-    public static final int K_CATEGORY = 3;
-    public static final int K_NOTE = 4;
-    public static final int K_SAVED_DATE = 5;
+    public static final String NOTE = "note";
+
+    private static final int K_ID = 0;
+    private static final int K_NAME = 1;
+    private static final int K_LINK = 2;
+    private static final int K_CATEGORY = 3;
+    private static final int K_SAVED_DATE = 4;
+    private static final int K_NOTE = 5;
 
     private final String[] columns = {ID, NAME, LINK, CATEGORY, SAVED_DATE, NOTE};
 
@@ -49,8 +51,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 NAME + " TEXT, " +
                 LINK + " TEXT, " +
                 CATEGORY + " TEXT, " +
-                NOTE + " TEXT, " +
-                SAVED_DATE + " TEXT);";
+                SAVED_DATE + " TEXT, "+
+                NOTE + " TEXT); ";
         db.execSQL(Query);
     }
 
@@ -105,11 +107,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + LINKS_TABLE, null);
         while (cursor.moveToNext()) {
-            data.add(new Home().setName(cursor.getString(1))
-                            .setLink(cursor.getString(2))
-                            .setCategory(cursor.getString(3))
-                            .setNote(cursor.getString(4))
-                    .setSavedDate(cursor.getString(5)));
+            data.add(new Home(cursor.getString(K_ID),
+                    cursor.getString(K_NAME),
+                    cursor.getString(K_LINK),
+                    cursor.getString(K_CATEGORY),
+                    cursor.getString(K_SAVED_DATE),
+                    cursor.getString(K_NOTE)));
         }
         cursor.close();
         return data;
