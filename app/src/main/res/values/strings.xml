@@ -13,4 +13,7 @@
     <string name="cd_category_icon">CD Category Icon</string>
     <string name="cd_add_category_dialog_icon">CD Add Category Dialog Icon</string>
     <string name="title_add_category">Add Category</string>
+    <string name="title_home">Home</string>
+    <string name="title_category">Category</string>
+    <string name="title_browser">Browser</string>
 </resources>
