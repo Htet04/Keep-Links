@@ -19,7 +19,8 @@
         android:src="@drawable/ic_round_add_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/cd_sheet_dialog_options_icon" />
 
     <TextView
         android:id="@+id/text"

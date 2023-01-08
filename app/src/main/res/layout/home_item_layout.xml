@@ -22,6 +22,7 @@
             android:layout_marginTop="8dp"
             android:hint="@string/app_name"
             android:textColor="@color/black"
+            android:textColorHint="#311B92"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -31,6 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/app_name"
+            android:textColor="#311B92"
             app:layout_constraintStart_toStartOf="@id/link_name"
             app:layout_constraintTop_toBottomOf="@id/link_name" />
 
@@ -41,6 +43,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:text="@string/app_name"
+            android:textColor="#311B92"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

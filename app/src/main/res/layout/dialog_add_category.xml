@@ -23,13 +23,14 @@
             android:layout_marginEnd="8dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_baseline_category_24"
-            app:tint="@color/white" />
+            app:tint="@color/white"
+            android:contentDescription="@string/cd_add_category_dialog_icon" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Add Category"
+            android:text="@string/title_add_category"
             android:textColor="@color/white"
             android:textSize="18sp" />
     </LinearLayout>
@@ -48,7 +49,7 @@
             android:id="@+id/text_category"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Category" />
+            android:hint="@string/hint_category" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
@@ -56,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="14dp"
-        android:text="Add Category"
+        android:text="@string/btn_add"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

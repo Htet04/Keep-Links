@@ -8,7 +8,7 @@
         style="@style/Theme.KeepLinks.TextInputLayout.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Link Name">
+        android:hint="@string/hint_name">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/name"
@@ -23,7 +23,7 @@
         style="@style/Theme.KeepLinks.TextInputLayout.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Link"
+        android:hint="@string/hint_link"
         android:layout_below="@id/nameLayout">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -39,7 +39,7 @@
         style="@style/Theme.KeepLinks.TextInputLayout.Drop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="category"
+        android:hint="@string/hint_category"
         android:layout_below="@id/linkLayout">
 
         <com.google.android.material.textfield.MaterialAutoCompleteTextView
@@ -55,7 +55,7 @@
         style="@style/Theme.KeepLinks.TextInputLayout.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Date"
+        android:hint="@string/hint_saved_date"
         android:layout_below="@id/categoryLayout">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -71,7 +71,7 @@
         style="@style/Theme.KeepLinks.TextInputLayout.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Note"
+        android:hint="@string/hint_note"
         android:layout_below="@id/dateLayout">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -90,7 +90,7 @@
         android:layout_below="@id/noteLayout"
         android:layout_marginEnd="8dp"
         android:layout_toStartOf="@+id/btn_add"
-        android:text="Cancel"
+        android:text="@string/btn_cancel"
         android:textAllCaps="false" />
 
     <com.google.android.material.button.MaterialButton
@@ -101,8 +101,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:layout_alignParentEnd="true"
-        android:text="Add"
-
+        android:text="@string/btn_add"
         android:textAllCaps="false" />
     <!--<com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nameLayout"

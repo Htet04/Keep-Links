@@ -51,6 +51,7 @@
         android:layout_marginBottom="24dp"
         android:src="@drawable/ic_round_add_24"
         app:layout_constraintBottom_toTopOf="@id/main_bnv"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/cd_floating_action_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
