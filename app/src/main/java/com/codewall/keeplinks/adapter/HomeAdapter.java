@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.codewall.keeplinks.data.HomeData;
 import com.codewall.keeplinks.databinding.HomeItemLayoutBinding;
 import com.codewall.keeplinks.ui.dialog.SheetDialog;
+import com.codewall.keeplinks.util.Utils;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder> {
 
@@ -55,7 +56,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
             dialog.setOnButtonClickListener(btn_type -> {
                 switch (btn_type) {
                     case BUTTON_COPY: {
-                        ((ClipboardManager)holder.itemView.getContext().getSystemService(Context.CLIPBOARD_SERVICE)).setPrimaryClip(ClipData.newPlainText("clipboard",data.get(position).getLink()));
+                        Utils.copyToClipboard(holder.itemView.getContext(), data.getLink(position));
                         Toast.makeText(holder.itemView.getContext(), "Link Copied!", Toast.LENGTH_SHORT).show();
                         break;
                     }
