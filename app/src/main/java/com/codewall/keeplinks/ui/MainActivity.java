@@ -37,9 +37,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Deprecated
     private void openDialog() {
         MyDialog myDialog = new MyDialog();
-        myDialog.show(getSupportFragmentManager(), "mydialog");
+        myDialog.show(getSupportFragmentManager(), "my dialog");
     }
 
     private void initialize() {
@@ -48,21 +49,21 @@ public class MainActivity extends AppCompatActivity {
         showFragment(new HomeFragment());
 
         binding.mainBnv.setOnItemSelectedListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.menu_bnv_home: {
+            switch (item.getTitle().toString()) {
+                case "Home": {
                     //test
                     menuSearch.setVisible(true);
                     menuOpenWith.setVisible(false);
                     showFragment(new HomeFragment());
                     break;
                 }
-                case R.id.menu_bnv_category: {
+                case "Category": {
                     menuSearch.setVisible(true);
                     menuOpenWith.setVisible(false);
                     showFragment(new CategoryFragment());
                     break;
                 }
-                case R.id.browser: {
+                case "Browser": {
                     menuSearch.setVisible(false);
                     menuOpenWith.setVisible(true);
                     showFragment(new BrowserFragment());
