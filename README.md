@@ -14,7 +14,6 @@ id (Object Reference) Note text
 |:--------------------------------------------------:|:---------------------------------------------------:|:-----:|
 |         [MainActivity.java](#MainActivity)         |         [activity_main.xml](#MainActivity)          |       |
 | [SplashScreenActivity.java](#SplashScreenActivity) | [activity_splash_screen.xml](#SplashScreenActivity) |       |
-|   [LinkEditorActivity.java](#LinkEditorActivity)   |   [activity_link_editor.xml](#LinkEditorActivity)   |       |
 
 ### MainActivity
 
@@ -29,29 +28,6 @@ All id from <strong>SplashScreenActivity</strong>
 
 * imageView (ImageView) to display app icon
 * textView (TextView) to display app name
-
-### LinkEditorActivity
-
-All id from <strong>LinkEditorActivity</strong>
-
-* appbarLayout (AppBarLayout)
-* toolbar (ToolBar)
-<br><br>
-* nameLayout (TextInputLayout)
-* linkLayout (TextInputLayout)
-* categoryLayout (TextInputLayout)
-* dateLayout (TextInputLayout)
-* noteLayout (TextInputLayout)
-<br><br>
-* name (TextInputEditText)
-* link (TextInputEditText)
-* category (TextInputEditText)
-* date (TextInputEditText)
-* note (TextInputEditText)
-<br><br>
-* btn_cancel (MaterialButton)
-* btn_add (MaterialButton)
-
 
 
 ## Fragment
