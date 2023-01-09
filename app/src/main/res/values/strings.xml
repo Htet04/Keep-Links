@@ -1,19 +1,27 @@
 <resources>
     <string name="app_name" translatable="false">Keep Links</string>
+    <!--EditText Hint-->
     <string name="hint_name">Name</string>
     <string name="hint_link">Link</string>
     <string name="hint_category">Category</string>
     <string name="hint_saved_date">Saved Date</string>
     <string name="hint_note">Note</string>
+
+    <!--Button Text-->
     <string name="btn_cancel">Cancel</string>
     <string name="btn_add">Add</string>
+
+    <!--Content Description-->
     <string name="cd_floating_action_button">CD Floating Action Button</string>
     <string name="cd_splash_screen_app_icon">CD Splash Screen App Icon</string>
     <string name="cd_sheet_dialog_options_icon">CD Sheet Dialog Options Icon</string>
     <string name="cd_category_icon">CD Category Icon</string>
     <string name="cd_add_category_dialog_icon">CD Add Category Dialog Icon</string>
+
+    <!--Title Text-->
     <string name="title_add_category">Add Category</string>
     <string name="title_home">Home</string>
     <string name="title_category">Category</string>
     <string name="title_browser">Browser</string>
+
 </resources>
